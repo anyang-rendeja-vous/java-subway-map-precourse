@@ -1,5 +1,8 @@
 package subway.view;
 
+import java.util.List;
+import subway.domain.Station;
+
 public class OutputView {
 
     private static final String MAIN = "## 메인 화면";
@@ -29,6 +32,7 @@ public class OutputView {
     }
 
     public void printStationManagementMenu() {
+        System.out.println();
         System.out.println(STATION_MANAGEMENT_MAIN);
         System.out.println(ADD_STATION);
         System.out.println(DELETE_STATION);
@@ -39,5 +43,11 @@ public class OutputView {
 
     public void successAddStation() {
         System.out.println(PREFIX + SUCCESSFUL_STATION_REGISTRATION);
+    }
+
+    public void printAllStations(List<Station> stations) {
+        stations.stream()
+                .map(station -> PREFIX + station.getName())
+                .forEach(System.out::println);
     }
 }

@@ -34,11 +34,12 @@ public class SubwayController {
                 createStation(inputView.inputStationName());
                 outputView.successAddStation();
             }
-        }
 
-//        System.out.println(StationRepository.stations().stream()
-//                .map(Station::getName)
-//                .collect(Collectors.toList()));
+            // 역 조회
+            if (secondChoice == 3) {
+                outputView.printAllStations(StationRepository.stations());
+            }
+        }
     }
 
     private void initialSettings() {
