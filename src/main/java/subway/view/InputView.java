@@ -7,9 +7,12 @@ public class InputView {
     private static final String ENTER_NUMBER = "## 원하는 기능을 선택하세요.";
     private static final String ENTER_STATION_NAME_TO_ADD = "## 등록할 역 이름을 입력하세요.";
     private static final String ENTER_STATION_NAME_TO_DELETE = "## 삭제할 역 이름을 입력하세요.";
+
     private static final String ENTER_LINE_NAME_TO_ADD = "## 등록할 노선 이름을 입력하세요.";
     private static final String ENTER_UPBOUND_TERMINUS_STATION = "## 등록할 노선의 상행 종점역 이름을 입력하세요.";
     private static final String ENTER_DOWNBOUND_TERMINUS_STATION = "## 등록할 노선의 하행 종점역 이름을 입력하세요.";
+    private static final String ENTER_LINE_NAME_TO_DELETE = "## 삭제할 노선 이름을 입력하세요.";
+
     private final Scanner scanner;
 
     public InputView(Scanner scanner) {
@@ -65,6 +68,13 @@ public class InputView {
     public String inputDownboundTerminusStation() {
         System.out.println();
         System.out.println(ENTER_DOWNBOUND_TERMINUS_STATION);
+        String name = input();
+        return name;
+    }
+
+    public String inputLineNameToDelete() {
+        System.out.println();
+        System.out.println(ENTER_LINE_NAME_TO_DELETE);
         String name = input();
         return name;
     }

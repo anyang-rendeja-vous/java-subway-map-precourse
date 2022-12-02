@@ -81,6 +81,13 @@ public class SubwayController {
                     outputView.successAddLine();
                 }
 
+                // 노선 삭제
+                if (secondChoice == 2) {
+                    LineRepository.deleteLineByName(
+                            inputView.inputLineNameToDelete()); // 삭제할 수 없다면 false 반환 -> 예외 처리
+                    outputView.successDeleteLine();
+                }
+
                 // 노선 조회
                 if (secondChoice == 3) {
                     outputView.printAllLines(LineRepository.lines());
