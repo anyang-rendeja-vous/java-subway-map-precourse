@@ -43,6 +43,7 @@ public class StationController implements Controller {
     }
 
     private void runCommand() {
+        inputView.printUsersChoiceOpening();
         try {
             String choice = inputReader.getUserInput();
             commandMap.getOrDefault(choice, this::throwException).run();
