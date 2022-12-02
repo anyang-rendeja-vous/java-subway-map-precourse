@@ -1,5 +1,6 @@
 package subway;
 
+import java.util.Arrays;
 import java.util.function.Supplier;
 import subway.controller.Controller;
 import subway.controller.LineController;
@@ -21,11 +22,22 @@ public enum MainControls {
         this.controllerMaker = controllerMaker;
     }
 
+    public String getChoice() {
+        return choice;
+    }
+
     public Controller generatedController(){
         return controllerMaker.get();
     }
 
-    public boolean isMatchingController(String choice){
-        return choice.equals(this.choice);
+    public static MainControls getMatchingControls(String choice){
+        return Arrays.stream(MainControls.values())
+                .filter(x -> x.choiceMatches(choice))
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException("error!"));
+    }
+
+    public boolean choiceMatches(String choice){
+        return this.choice.equals(choice);
     }
 }
