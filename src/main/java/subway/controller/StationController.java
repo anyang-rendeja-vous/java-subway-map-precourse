@@ -12,6 +12,10 @@ import subway.ui.InputView;
 import subway.ui.OutputView;
 
 public class StationController implements Controller {
+    private static final String CREATE = "1";
+    private static final String DELETE = "2";
+    private static final String GET_LIST = "3";
+    private static final String BACK = "B";
 
     private final InputReader inputReader;
     private final InputView inputView;
@@ -26,10 +30,10 @@ public class StationController implements Controller {
     }
 
     private void mapInit() {
-        commandMap.put("1", this::createStation);
-        commandMap.put("2", this::deleteStation);
-        commandMap.put("3", this::getStationsList);
-        commandMap.put("B", this::goBack);
+        commandMap.put(CREATE, this::createStation);
+        commandMap.put(DELETE, this::deleteStation);
+        commandMap.put(GET_LIST, this::getStationsList);
+        commandMap.put(BACK, this::goBack);
     }
 
     @Override
