@@ -114,6 +114,15 @@ public class SubwayController {
                             Integer.parseInt(order) - 1); // 1번부터 시작하니까 실제로는 -1 해야함
                     outputView.successAddSection();
                 }
+
+                // 구간 삭제
+                if (secondChoice == 2) {
+                    String lineName = inputView.inputLineNameToDeleteInSection();
+                    String stationName = inputView.inputStationNameToDeleteInSection();
+                    Line line = LineRepository.findLine(lineName);
+                    line.deleteSection(StationRepository.findStation(stationName));
+                    outputView.successDeleteSection();
+                }
             }
         }
     }

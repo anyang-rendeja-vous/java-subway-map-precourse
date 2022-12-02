@@ -34,6 +34,7 @@ public class OutputView {
     private static final String SUCCESSFUL_LINE_REGISTRATION = "지하철 노선이 등록되었습니다.";
     private static final String SUCCESSFUL_LINE_DELETE = "지하철 노선이 삭제되었습니다.";
     private static final String SUCCESSFUL_SECTION_REGISTRATION = "구간이 등록되었습니다.";
+    private static final String SUCCESSFUL_SECTION_DELETE = "구간이 삭제되었습니다.";
 
     public void printInitialMenu() {
         System.out.println(MAIN);
@@ -114,6 +115,12 @@ public class OutputView {
     public void successAddSection() {
         System.out.println();
         System.out.println(PREFIX + SUCCESSFUL_SECTION_REGISTRATION);
+        System.out.println();
+    }
+
+    public void successDeleteSection() {
+        System.out.println();
+        System.out.println(PREFIX + SUCCESSFUL_SECTION_DELETE);
         System.out.println();
     }
 }

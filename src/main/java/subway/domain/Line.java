@@ -25,4 +25,8 @@ public class Line {
     public void addSectionAsSpecified(Station station, int order) {
         stations.add(order, station);
     }
+
+    public void deleteSection(Station station) {
+        stations.remove(station);
+    }
 }
