@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class StationRepository {
 
@@ -27,5 +28,12 @@ public class StationRepository {
                 .filter(station -> station.getName().equals(findStation))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(NOT_EXISTED_STATION));
+    }
+
+    public static boolean isContain(String findStation) {
+        return stations().stream()
+                .map(Station::getName)
+                .collect(Collectors.toList())
+                .contains(findStation);
     }
 }

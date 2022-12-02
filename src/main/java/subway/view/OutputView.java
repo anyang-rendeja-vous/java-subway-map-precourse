@@ -40,6 +40,12 @@ public class OutputView {
     private static final String SUBWAY_MAP = "## 지하철 노선도";
     private static final String SEPARATOR = "---";
 
+    private static final String ERROR_PREFIX = "[ERROR] ";
+
+    public void printError(String message) {
+        System.out.println(ERROR_PREFIX + message);
+    }
+
     public void printInitialMenu() {
         System.out.println(MAIN);
         System.out.println(STATION_MANAGEMENT);
