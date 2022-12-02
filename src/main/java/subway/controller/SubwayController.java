@@ -52,8 +52,16 @@ public class SubwayController {
 
                 // 역 삭제
                 if (secondChoice == 2) {
-                    StationRepository.deleteStation(
-                            inputView.inputStationNameToDelete()); // 삭제할 수 없다면 false 반환 -> 예외 처리
+                    String deleteStation = inputView.inputStationNameToDelete();
+                    // 어느 노선에도 포함되어 있지 않은 경우 삭제 가능
+                    if (!LineRepository.isNotContain(deleteStation)) {
+                        throw new IllegalArgumentException("노선에 등록되어 있는 역은 삭제할 수 없습니다.");
+                    }
+                    if (!StationRepository.deleteStation(deleteStation)) {
+                        throw new IllegalArgumentException("존재하지 않는 역입니다.");
+                    }
+//                    StationRepository.deleteStation(
+//                            inputView.inputStationNameToDelete()); // 삭제할 수 없다면 false 반환 -> 예외 처리
                     outputView.successDeleteStation();
                 }
 

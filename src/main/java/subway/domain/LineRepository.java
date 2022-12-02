@@ -28,4 +28,14 @@ public class LineRepository {
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(NOT_EXISTED_LINE));
     }
+
+    public static boolean isNotContain(String findStation) {
+        return lines().stream()
+                .map(line -> line.getStations()
+                        .stream()
+                        .anyMatch(station -> station.getName().equals(findStation))
+                )
+                .findAny()
+                .isEmpty();
+    }
 }
