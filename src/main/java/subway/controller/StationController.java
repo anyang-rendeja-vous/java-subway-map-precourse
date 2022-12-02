@@ -4,15 +4,18 @@ import subway.InputReader;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 import subway.ui.InputView;
+import subway.ui.OutputView;
 
 public class StationController implements Controller {
 
     private final InputReader inputReader;
     private final InputView inputView;
+    private final OutputView outputView;
 
     public StationController() {
         inputReader = new InputReader();
         inputView = new InputView();
+        outputView = new OutputView();
     }
 
     @Override
@@ -44,8 +47,15 @@ public class StationController implements Controller {
 
     private void createStation(){
         inputView.printStationChoiceOpening();
-        String stationName = inputReader.getUserInput();
-        StationRepository.addStation(new Station(stationName));
+        try{
+            String stationName = inputReader.getUserInput();
+            StationRepository.addStation(new Station(stationName));
+            outputView.printStationCreationResult();
+        }
+        catch (IllegalStateException exception){
+            outputView.printErrorMessage(exception.getMessage());
+            createStation();
+        }
     }
 
     private void deleteStation(){

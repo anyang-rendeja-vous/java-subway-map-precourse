@@ -1,5 +1,7 @@
 package subway.domain;
 
+import static subway.ui.ErrorMessages.DUPLICATED_STATION_NAME;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,7 +16,7 @@ public class StationRepository {
 
     public static void addStation(Station station) {
         if (isDuplicatedName(station)){
-            throw new IllegalStateException("중복!");
+            throw new IllegalStateException(DUPLICATED_STATION_NAME.getMessage());
         }
         stations.add(station);
     }
