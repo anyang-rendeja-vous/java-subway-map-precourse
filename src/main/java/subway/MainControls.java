@@ -1,5 +1,7 @@
 package subway;
 
+import static subway.ui.ErrorMessages.INVALID_MAIN_CHOICE;
+
 import java.util.Arrays;
 import java.util.function.Supplier;
 import subway.controller.Controller;
@@ -34,7 +36,7 @@ public enum MainControls {
         return Arrays.stream(MainControls.values())
                 .filter(x -> x.choiceMatches(choice))
                 .findAny()
-                .orElseThrow(() -> new IllegalArgumentException("error!"));
+                .orElseThrow(() -> new IllegalArgumentException(INVALID_MAIN_CHOICE.getMessage()));
     }
 
     public boolean choiceMatches(String choice){
