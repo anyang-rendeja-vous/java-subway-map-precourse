@@ -1,7 +1,6 @@
 package subway.controller;
 
 import java.util.Scanner;
-import java.util.stream.Collectors;
 import subway.domain.Line;
 import subway.domain.LineRepository;
 import subway.domain.Station;
@@ -21,9 +20,21 @@ public class SubwayController {
 
     public void run() {
         initialSettings();
-        outputView.printMenu();
+        outputView.printInitialMenu();
         int choice = Integer.parseInt(inputView.inputNumber());
 
+        int secondChoice;
+        // 역 관리
+        if (choice == 1) {
+            outputView.printStationManagementMenu();
+            secondChoice = Integer.parseInt(inputView.inputStationManagement());
+
+            // 역 등록
+            if (secondChoice == 1) {
+                createStation(inputView.inputStationName());
+                outputView.successAddStation();
+            }
+        }
 
 //        System.out.println(StationRepository.stations().stream()
 //                .map(Station::getName)

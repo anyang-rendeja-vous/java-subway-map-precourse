@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class InputView {
 
     private static final String ENTER_NUMBER = "## 원하는 기능을 선택하세요.";
+    private static final String ENTER_STATION_NAME = "## 등록할 역 이름을 입력하세요.";
     private final Scanner scanner;
 
     public InputView(Scanner scanner) {
@@ -18,6 +19,20 @@ public class InputView {
     public String inputNumber() {
         System.out.println(ENTER_NUMBER);
         String choice = input();
+        // 숫자는 1~4 까지, 알파벳은 Q 만!
         return choice;
+    }
+
+    public String inputStationManagement() {
+        System.out.println(ENTER_NUMBER);
+        String choice = input();
+        // 숫자는 1~3 까지, 알파벳은 B 만!
+        return choice;
+    }
+
+    public String inputStationName() {
+        System.out.println(ENTER_STATION_NAME);
+        String name = input();
+        return name;
     }
 }

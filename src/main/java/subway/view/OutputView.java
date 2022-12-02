@@ -9,7 +9,16 @@ public class OutputView {
     private static final String PRINT_SUBWAY_MAP = "4. 지하철 노선도 출력";
     private static final String QUIT = "Q. 종료";
 
-    public void printMenu() {
+    private static final String STATION_MANAGEMENT_MAIN = "## 역 관리 화면";
+    private static final String ADD_STATION = "1. 역 등록";
+    private static final String DELETE_STATION = "2. 역 삭제";
+    private static final String PRINT_ALL_STATIONS = "3. 역 조회";
+    private static final String BACK = "B. 돌아가기";
+
+    private static final String PREFIX = "[INFO] ";
+    private static final String SUCCESSFUL_STATION_REGISTRATION = "지하철 역이 등록되었습니다.";
+
+    public void printInitialMenu() {
         System.out.println(MAIN);
         System.out.println(STATION_MANAGEMENT);
         System.out.println(LINE_MANAGEMENT);
@@ -17,5 +26,18 @@ public class OutputView {
         System.out.println(PRINT_SUBWAY_MAP);
         System.out.println(QUIT);
         System.out.println();
+    }
+
+    public void printStationManagementMenu() {
+        System.out.println(STATION_MANAGEMENT_MAIN);
+        System.out.println(ADD_STATION);
+        System.out.println(DELETE_STATION);
+        System.out.println(PRINT_ALL_STATIONS);
+        System.out.println(BACK);
+        System.out.println();
+    }
+
+    public void successAddStation() {
+        System.out.println(PREFIX + SUCCESSFUL_STATION_REGISTRATION);
     }
 }
