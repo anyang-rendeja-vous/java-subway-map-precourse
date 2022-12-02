@@ -2,6 +2,7 @@ package subway.view;
 
 import java.util.List;
 import subway.domain.Line;
+import subway.domain.LineRepository;
 import subway.domain.Station;
 
 public class OutputView {
@@ -35,6 +36,9 @@ public class OutputView {
     private static final String SUCCESSFUL_LINE_DELETE = "지하철 노선이 삭제되었습니다.";
     private static final String SUCCESSFUL_SECTION_REGISTRATION = "구간이 등록되었습니다.";
     private static final String SUCCESSFUL_SECTION_DELETE = "구간이 삭제되었습니다.";
+
+    private static final String SUBWAY_MAP = "## 지하철 노선도";
+    private static final String SEPARATOR = "---";
 
     public void printInitialMenu() {
         System.out.println(MAIN);
@@ -122,5 +126,19 @@ public class OutputView {
         System.out.println();
         System.out.println(PREFIX + SUCCESSFUL_SECTION_DELETE);
         System.out.println();
+    }
+
+    public void printSubwayMap() {
+        System.out.println();
+        System.out.println(SUBWAY_MAP);
+        LineRepository.lines().forEach(line -> {
+            System.out.println(PREFIX + line.getName());
+            System.out.println(PREFIX + SEPARATOR);
+            line.getStations()
+                    .stream()
+                    .map(station -> PREFIX + station.getName())
+                    .forEach(System.out::println);
+            System.out.println();
+        });
     }
 }

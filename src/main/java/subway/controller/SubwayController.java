@@ -124,6 +124,12 @@ public class SubwayController {
                     outputView.successDeleteSection();
                 }
             }
+
+            // 지하철 노선도 출력
+            if (firstChoice == 4) {
+                outputView.printSubwayMap();
+            }
+
         }
     }
 

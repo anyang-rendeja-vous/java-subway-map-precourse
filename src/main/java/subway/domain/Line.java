@@ -29,4 +29,8 @@ public class Line {
     public void deleteSection(Station station) {
         stations.remove(station);
     }
+
+    public LinkedList<Station> getStations() {
+        return stations;
+    }
 }
