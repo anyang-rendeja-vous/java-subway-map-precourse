@@ -1,5 +1,7 @@
 package subway;
 
+import static subway.ChoiceMapper.executeByUserChoice;
+
 import java.util.Scanner;
 import subway.controller.Controller;
 import subway.ui.InputView;
@@ -11,12 +13,11 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
 
         // TODO: 프로그램 구현
-        ChoiceMapper choiceMapper = new ChoiceMapper();
         InputView inputView = new InputView();
         while (isContinue){
             inputView.printMainChoicesMenu();
             inputView.printUsersChoiceOpening();
-            Controller controller = choiceMapper.executeByUserChoice(scanner.next());
+            Controller controller = executeByUserChoice(scanner.next());
             controller.execute();
         }
 
