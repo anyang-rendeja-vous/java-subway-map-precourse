@@ -1,6 +1,12 @@
 package subway.controller;
 
-import subway.controller.Controller;
-
 public class StationController implements Controller {
+
+    public StationController() {
+    }
+
+    @Override
+    public void execute() {
+
+    }
 }
