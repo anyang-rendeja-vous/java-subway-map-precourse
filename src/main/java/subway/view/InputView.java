@@ -1,6 +1,7 @@
 package subway.view;
 
 import java.util.Scanner;
+import subway.util.InputValidator;
 
 public class InputView {
 
@@ -21,9 +22,11 @@ public class InputView {
     private static final String ENTER_STATION_NAME_TO_DELETE_IN_SECTION = "## 삭제할 구간의 역을 입력하세요.";
 
     private final Scanner scanner;
+    private final InputValidator inputValidator;
 
     public InputView(Scanner scanner) {
         this.scanner = scanner;
+        this.inputValidator = new InputValidator();
     }
 
     private String input() {
@@ -33,21 +36,21 @@ public class InputView {
     public String inputNumber() {
         System.out.println(ENTER_NUMBER);
         String choice = input();
-        // 숫자는 1~4 까지, 알파벳은 Q 만!
+        inputValidator.isMenuValid(choice);
         return choice;
     }
 
     public String inputStationManagement() {
         System.out.println(ENTER_NUMBER);
         String choice = input();
-        // 숫자는 1~3 까지, 알파벳은 B 만!
+        inputValidator.isStationMenuValid(choice);
         return choice;
     }
 
     public String inputSectionManagement() {
         System.out.println(ENTER_NUMBER);
         String choice = input();
-        // 숫자는 1~2 까지, 알파벳은 B 만!
+        inputValidator.isSectionMenuValid(choice);
         return choice;
     }
 
