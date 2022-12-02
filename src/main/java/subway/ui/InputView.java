@@ -19,6 +19,7 @@ public class InputView {
 
     private static final String USERS_CHOICE_OPENING = "원하는 기능을 선택하세요.";
     private static final String STATION_CHOICE_OPENING = "등록할 역 이름을 입력하세요.";
+    private static final String STATION_TO_DELETE_OPENING = "삭제할 역 이름을 입력하세요.";
 
     public void printMainChoicesMenu() {
         System.out.println(HASHTAG + " " + MAIN_MENU_OPENING);
@@ -41,4 +42,7 @@ public class InputView {
     }
 
 
+    public void printStationToDeleteOpening() {
+        System.out.println(HASHTAG + " " + STATION_TO_DELETE_OPENING);
+    }
 }
