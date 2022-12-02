@@ -18,9 +18,15 @@ public class OutputView {
     private static final String PRINT_ALL_STATIONS = "3. 역 조회";
     private static final String BACK = "B. 돌아가기";
 
+    private static final String LINE_MANAGEMENT_MAIN = "## 노선 관리 화면";
+    private static final String ADD_LINE = "1. 노선 등록";
+    private static final String DELETE_LINE = "2. 노선 삭제";
+    private static final String PRINT_ALL_LINES = "3. 노선 조회";
+
     private static final String PREFIX = "[INFO] ";
     private static final String SUCCESSFUL_STATION_REGISTRATION = "지하철 역이 등록되었습니다.";
     private static final String SUCCESSFUL_STATION_DELETE = "지하철 역이 삭제되었습니다.";
+    private static final String SUCCESSFUL_LINE_REGISTRATION = "지하철 노선이 등록되었습니다.";
 
     public void printInitialMenu() {
         System.out.println(MAIN);
@@ -42,6 +48,16 @@ public class OutputView {
         System.out.println();
     }
 
+    public void printLineManagementMenu() {
+        System.out.println();
+        System.out.println(LINE_MANAGEMENT_MAIN);
+        System.out.println(ADD_LINE);
+        System.out.println(DELETE_LINE);
+        System.out.println(PRINT_ALL_LINES);
+        System.out.println(BACK);
+        System.out.println();
+    }
+
     public void successAddStation() {
         System.out.println();
         System.out.println(PREFIX + SUCCESSFUL_STATION_REGISTRATION);
@@ -56,6 +72,12 @@ public class OutputView {
         stations.stream()
                 .map(station -> PREFIX + station.getName())
                 .forEach(System.out::println);
+        System.out.println();
+    }
+
+    public void successAddLine() {
+        System.out.println();
+        System.out.println(PREFIX + SUCCESSFUL_LINE_REGISTRATION);
         System.out.println();
     }
 }

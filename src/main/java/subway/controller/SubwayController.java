@@ -61,6 +61,27 @@ public class SubwayController {
                     outputView.printAllStations(StationRepository.stations());
                 }
             }
+
+            // 노선 관리
+            if (firstChoice == 2) {
+                outputView.printLineManagementMenu();
+                secondChoiceStr = inputView.inputStationManagement();
+                if (secondChoiceStr.equals("B")) {
+                    continue;
+                }
+
+                secondChoice = Integer.parseInt(secondChoiceStr);
+
+                // 라인 등록
+                if (secondChoice == 1) {
+                    String lineName = inputView.inputLineNameToAdd();
+                    String upbound = inputView.inputUpboundTerminusStation();
+                    String downbound = inputView.inputDownboundTerminusStation();
+                    createLine(lineName, upbound, downbound);
+                    outputView.successAddLine();
+                }
+
+            }
         }
     }
 
@@ -85,28 +106,28 @@ public class SubwayController {
     }
 
     private void setLines() {
-        createLine("2호선");
-        createLine("3호선");
-        createLine("신분당선");
+        createLine("2호선", "교대역", "역삼역");
+        createLine("3호선", "교대역", "매봉역");
+        createLine("신분당선", "강남역", "양재시민의숲역");
     }
 
-    private void createLine(String lineName) {
-        LineRepository.addLine(new Line(lineName));
+    private void createLine(String lineName, String upbound, String downbound) {
+        LineRepository.addLine(new Line(lineName, StationRepository.findStation(upbound), StationRepository.findStation(downbound)));
     }
 
     private void setSections() {
-        addSections("2호선", "교대역");
+//        addSections("2호선", "교대역");
         addSections("2호선", "강남역");
-        addSections("2호선", "역삼역");
+//        addSections("2호선", "역삼역");
 
-        addSections("3호선", "교대역");
+//        addSections("3호선", "교대역");
         addSections("3호선", "남부터미널역");
         addSections("3호선", "양재역");
-        addSections("3호선", "매봉역");
+//        addSections("3호선", "매봉역");
 
-        addSections("신분당선", "강남역");
+//        addSections("신분당선", "강남역");
         addSections("신분당선", "양재역");
-        addSections("신분당선", "양재시민의숲역");
+//        addSections("신분당선", "양재시민의숲역");
     }
 
     private void addSections(String lineName, String StationName) {
