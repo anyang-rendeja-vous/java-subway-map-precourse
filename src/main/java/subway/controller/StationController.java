@@ -60,15 +60,9 @@ public class StationController implements Controller {
 
     private void deleteStation(){
         inputView.printStationToDeleteOpening();
-        try{
-            String stationName = inputReader.getUserInput();
-            StationRepository.deleteStation(new Station(stationName));
+        String stationName = inputReader.getUserInput();
+        if (StationRepository.deleteStation(stationName)) // TODO: 에러 처리
             outputView.printStationDeletionResult();
-        }
-        catch (IllegalStateException exception){
-            outputView.printErrorMessage(exception.getMessage());
-            deleteStation();
-        }
     }
 
     private void getStationsList(){
