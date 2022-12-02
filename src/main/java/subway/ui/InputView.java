@@ -26,6 +26,7 @@ public class InputView {
         System.out.println(HASHTAG + " " + MAIN_MENU_OPENING);
         System.out
                 .println(MAIN_FIRST + "\n" + MAIN_SECOND + "\n" + MAIN_THIRD + "\n" + MAIN_FOURTH + "\n" + MAIN_FINAL);
+        System.out.println();
     }
 
     public void printUsersChoiceOpening() {
@@ -36,10 +37,11 @@ public class InputView {
         System.out.println(HASHTAG + " " + STATION_CHOICE_OPENING);
     }
 
-    public void printStationsChoicesMenu(){
+    public void printStationsChoicesMenu() {
         System.out.println(HASHTAG + " " + STATION_MENU_OPENING);
         System.out
                 .println(STATION_FIRST + "\n" + STATION_SECOND + "\n" + STATION_THIRD + "\n" + BACK);
+
     }
 
 
