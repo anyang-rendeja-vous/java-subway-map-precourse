@@ -24,11 +24,16 @@ public class OutputView {
     private static final String DELETE_LINE = "2. 노선 삭제";
     private static final String PRINT_ALL_LINES = "3. 노선 조회";
 
+    private static final String SECTION_MANAGEMENT_MAIN = "## 구간 관리 화면";
+    private static final String ADD_SECTION = "1. 구간 등록";
+    private static final String DELETE_SECTION = "2. 구간 삭제";
+
     private static final String PREFIX = "[INFO] ";
     private static final String SUCCESSFUL_STATION_REGISTRATION = "지하철 역이 등록되었습니다.";
     private static final String SUCCESSFUL_STATION_DELETE = "지하철 역이 삭제되었습니다.";
     private static final String SUCCESSFUL_LINE_REGISTRATION = "지하철 노선이 등록되었습니다.";
     private static final String SUCCESSFUL_LINE_DELETE = "지하철 노선이 삭제되었습니다.";
+    private static final String SUCCESSFUL_SECTION_REGISTRATION = "구간이 등록되었습니다.";
 
     public void printInitialMenu() {
         System.out.println(MAIN);
@@ -63,6 +68,7 @@ public class OutputView {
     public void successAddStation() {
         System.out.println();
         System.out.println(PREFIX + SUCCESSFUL_STATION_REGISTRATION);
+        System.out.println();
     }
 
     public void successDeleteStation() {
@@ -93,6 +99,21 @@ public class OutputView {
     public void successDeleteLine() {
         System.out.println();
         System.out.println(PREFIX + SUCCESSFUL_LINE_DELETE);
+        System.out.println();
+    }
+
+    public void printSectionManagementMenu() {
+        System.out.println();
+        System.out.println(SECTION_MANAGEMENT_MAIN);
+        System.out.println(ADD_SECTION);
+        System.out.println(DELETE_SECTION);
+        System.out.println(BACK);
+        System.out.println();
+    }
+
+    public void successAddSection() {
+        System.out.println();
+        System.out.println(PREFIX + SUCCESSFUL_SECTION_REGISTRATION);
         System.out.println();
     }
 }

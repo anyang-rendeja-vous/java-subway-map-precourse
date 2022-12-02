@@ -20,4 +20,9 @@ public class Line {
     public void addSection(Station station) { // 구간 추가 = 노선에 역 추가
         stations.add(1, station);
     }
+
+    // 지정한 위치에 추가
+    public void addSectionAsSpecified(Station station, int order) {
+        stations.add(order, station);
+    }
 }

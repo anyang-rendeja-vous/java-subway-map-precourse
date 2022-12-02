@@ -13,6 +13,10 @@ public class InputView {
     private static final String ENTER_DOWNBOUND_TERMINUS_STATION = "## 등록할 노선의 하행 종점역 이름을 입력하세요.";
     private static final String ENTER_LINE_NAME_TO_DELETE = "## 삭제할 노선 이름을 입력하세요.";
 
+    private static final String ENTER_LINE_NAME = "## 노선을 입력하세요.";
+    private static final String ENTER_STATION_NAME = "## 역이름을 입력하세요.";
+    private static final String ENTER_ORDER = "## 순서를 입력하세요.";
+
     private final Scanner scanner;
 
     public InputView(Scanner scanner) {
@@ -34,6 +38,13 @@ public class InputView {
         System.out.println(ENTER_NUMBER);
         String choice = input();
         // 숫자는 1~3 까지, 알파벳은 B 만!
+        return choice;
+    }
+
+    public String inputSectionManagement() {
+        System.out.println(ENTER_NUMBER);
+        String choice = input();
+        // 숫자는 1~2 까지, 알파벳은 B 만!
         return choice;
     }
 
@@ -75,6 +86,27 @@ public class InputView {
     public String inputLineNameToDelete() {
         System.out.println();
         System.out.println(ENTER_LINE_NAME_TO_DELETE);
+        String name = input();
+        return name;
+    }
+
+    public String inputLineName() {
+        System.out.println();
+        System.out.println(ENTER_LINE_NAME);
+        String name = input();
+        return name;
+    }
+
+    public String inputStationName() {
+        System.out.println();
+        System.out.println(ENTER_STATION_NAME);
+        String name = input();
+        return name;
+    }
+
+    public String inputOrder() {
+        System.out.println();
+        System.out.println(ENTER_ORDER);
         String name = input();
         return name;
     }

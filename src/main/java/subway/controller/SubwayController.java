@@ -23,7 +23,7 @@ public class SubwayController {
 
         String firstChoiceStr;
         int firstChoice;
-        while(true) {
+        while (true) {
             outputView.printInitialMenu();
             firstChoiceStr = inputView.inputNumber();
             if (firstChoiceStr.equals("Q")) {
@@ -93,6 +93,28 @@ public class SubwayController {
                     outputView.printAllLines(LineRepository.lines());
                 }
             }
+
+            // 구간 관리
+            if (firstChoice == 3) {
+                outputView.printSectionManagementMenu();
+                secondChoiceStr = inputView.inputSectionManagement();
+                if (secondChoiceStr.equals("B")) {
+                    continue;
+                }
+
+                secondChoice = Integer.parseInt(secondChoiceStr);
+
+                // 구간 등록
+                if (secondChoice == 1) {
+                    String lineName = inputView.inputLineName();
+                    String stationName = inputView.inputStationName();
+                    String order = inputView.inputOrder();
+                    Line line = LineRepository.findLine(lineName);
+                    line.addSectionAsSpecified(StationRepository.findStation(stationName),
+                            Integer.parseInt(order) - 1); // 1번부터 시작하니까 실제로는 -1 해야함
+                    outputView.successAddSection();
+                }
+            }
         }
     }
 
@@ -123,7 +145,8 @@ public class SubwayController {
     }
 
     private void createLine(String lineName, String upbound, String downbound) {
-        LineRepository.addLine(new Line(lineName, StationRepository.findStation(upbound), StationRepository.findStation(downbound)));
+        LineRepository.addLine(
+                new Line(lineName, StationRepository.findStation(upbound), StationRepository.findStation(downbound)));
     }
 
     private void setSections() {
