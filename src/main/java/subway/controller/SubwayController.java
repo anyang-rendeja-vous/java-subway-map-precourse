@@ -1,6 +1,7 @@
 package subway.controller;
 
 import java.util.Scanner;
+import java.util.function.Supplier;
 import subway.domain.Line;
 import subway.domain.LineRepository;
 import subway.domain.Station;
@@ -25,7 +26,7 @@ public class SubwayController {
         int firstChoice;
         while (true) {
             outputView.printInitialMenu();
-            firstChoiceStr = inputView.inputNumber();
+            firstChoiceStr = repeat(inputView::inputNumber);
             if (firstChoiceStr.equals("Q")) {
                 break;
             }
@@ -36,7 +37,7 @@ public class SubwayController {
             // 역 관리
             if (firstChoice == 1) {
                 outputView.printStationManagementMenu();
-                secondChoiceStr = inputView.inputStationManagement();
+                secondChoiceStr = repeat(inputView::inputStationManagement);
                 if (secondChoiceStr.equals("B")) {
                     continue;
                 }
@@ -65,7 +66,7 @@ public class SubwayController {
             // 노선 관리
             if (firstChoice == 2) {
                 outputView.printLineManagementMenu();
-                secondChoiceStr = inputView.inputStationManagement();
+                secondChoiceStr = repeat(inputView::inputStationManagement);
                 if (secondChoiceStr.equals("B")) {
                     continue;
                 }
@@ -97,7 +98,7 @@ public class SubwayController {
             // 구간 관리
             if (firstChoice == 3) {
                 outputView.printSectionManagementMenu();
-                secondChoiceStr = inputView.inputSectionManagement();
+                secondChoiceStr = repeat(inputView::inputSectionManagement);
                 if (secondChoiceStr.equals("B")) {
                     continue;
                 }
@@ -173,5 +174,14 @@ public class SubwayController {
 
     private void addSections(String lineName, String StationName) {
         LineRepository.findLine(lineName).addSection(StationRepository.findStation(StationName));
+    }
+
+    private <T> T repeat(Supplier<T> inputReader) {
+        try {
+            return inputReader.get();
+        } catch (IllegalArgumentException ex) {
+            outputView.printError(ex.getMessage());
+            return repeat(inputReader);
+        }
     }
 }
