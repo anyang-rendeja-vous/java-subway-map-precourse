@@ -43,6 +43,7 @@ public class OutputView {
     }
 
     public void successAddStation() {
+        System.out.println();
         System.out.println(PREFIX + SUCCESSFUL_STATION_REGISTRATION);
     }
 
@@ -55,5 +56,6 @@ public class OutputView {
         stations.stream()
                 .map(station -> PREFIX + station.getName())
                 .forEach(System.out::println);
+        System.out.println();
     }
 }

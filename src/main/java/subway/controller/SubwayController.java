@@ -20,30 +20,46 @@ public class SubwayController {
 
     public void run() {
         initialSettings();
-        outputView.printInitialMenu();
-        int choice = Integer.parseInt(inputView.inputNumber());
 
-        int secondChoice;
-        // 역 관리
-        if (choice == 1) {
-            outputView.printStationManagementMenu();
-            secondChoice = Integer.parseInt(inputView.inputStationManagement());
-
-            // 역 등록
-            if (secondChoice == 1) {
-                createStation(inputView.inputStationNameToAdd());
-                outputView.successAddStation();
+        String firstChoiceStr;
+        int firstChoice;
+        while(true) {
+            outputView.printInitialMenu();
+            firstChoiceStr = inputView.inputNumber();
+            if (firstChoiceStr.equals("Q")) {
+                break;
             }
 
-            // 역 삭제
-            if (secondChoice == 2) {
-                StationRepository.deleteStation(inputView.inputStationNameToDelete()); // 삭제할 수 없다면 false 반환 -> 예외 처리
-                outputView.successDeleteStation();
-            }
+            firstChoice = Integer.parseInt(firstChoiceStr);
+            String secondChoiceStr;
+            int secondChoice;
+            // 역 관리
+            if (firstChoice == 1) {
+                outputView.printStationManagementMenu();
+                secondChoiceStr = inputView.inputStationManagement();
+                if (secondChoiceStr.equals("B")) {
+                    continue;
+                }
 
-            // 역 조회
-            if (secondChoice == 3) {
-                outputView.printAllStations(StationRepository.stations());
+                secondChoice = Integer.parseInt(secondChoiceStr);
+
+                // 역 등록
+                if (secondChoice == 1) {
+                    createStation(inputView.inputStationNameToAdd());
+                    outputView.successAddStation();
+                }
+
+                // 역 삭제
+                if (secondChoice == 2) {
+                    StationRepository.deleteStation(
+                            inputView.inputStationNameToDelete()); // 삭제할 수 없다면 false 반환 -> 예외 처리
+                    outputView.successDeleteStation();
+                }
+
+                // 역 조회
+                if (secondChoice == 3) {
+                    outputView.printAllStations(StationRepository.stations());
+                }
             }
         }
     }

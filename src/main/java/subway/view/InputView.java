@@ -32,6 +32,7 @@ public class InputView {
     }
 
     public String inputStationNameToAdd() {
+        System.out.println();
         System.out.println(ENTER_STATION_NAME_TO_ADD);
         String name = input();
         return name;
