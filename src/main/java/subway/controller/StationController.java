@@ -1,5 +1,6 @@
 package subway.controller;
 
+import java.util.List;
 import subway.InputReader;
 import subway.domain.Station;
 import subway.domain.StationRepository;
@@ -66,7 +67,9 @@ public class StationController implements Controller {
     }
 
     private void getStationsList(){
-        StationRepository.stations();
+        inputView.printStationsListOpening();
+        List<Station> stations = StationRepository.stations();
+        outputView.printStationsList(stations);
     }
 
 }

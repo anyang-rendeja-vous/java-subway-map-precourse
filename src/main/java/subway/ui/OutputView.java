@@ -1,5 +1,8 @@
 package subway.ui;
 
+import java.util.List;
+import subway.domain.Station;
+
 public class OutputView {
     private static final String INFO = "[INFO]";
     private static final String ERROR = "[ERROR]";
@@ -17,5 +20,15 @@ public class OutputView {
 
     public void printStationDeletionResult(){
         System.out.println(INFO + " " + STATION_DELETED);
+    }
+
+    public void printStationsList(List<Station> stations) {
+        for (Station station : stations) {
+            printSingleStation(station);
+        }
+    }
+
+    private void printSingleStation(Station station){
+        System.out.println(INFO + " " + station.getName());
     }
 }
