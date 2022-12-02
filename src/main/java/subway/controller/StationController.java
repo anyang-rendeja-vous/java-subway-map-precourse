@@ -3,17 +3,21 @@ package subway.controller;
 import subway.InputReader;
 import subway.domain.Station;
 import subway.domain.StationRepository;
+import subway.ui.InputView;
 
 public class StationController implements Controller {
 
     private final InputReader inputReader;
+    private final InputView inputView;
 
     public StationController() {
         inputReader = new InputReader();
+        inputView = new InputView();
     }
 
     @Override
     public void execute() {
+        inputView.printStationsChoicesMenu();
         String choice = inputReader.getUserInput();
         executeChoice(choice);
     }
@@ -39,12 +43,13 @@ public class StationController implements Controller {
     }
 
     private void createStation(){
+        inputView.printStationChoiceOpening();
         String stationName = inputReader.getUserInput();
         StationRepository.addStation(new Station(stationName));
     }
 
     private void deleteStation(){
-        StationRepository.deleteStation();
+        //StationRepository.deleteStation();
     }
 
     private void getStationsList(){
