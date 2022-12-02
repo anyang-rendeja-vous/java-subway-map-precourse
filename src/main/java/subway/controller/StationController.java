@@ -53,7 +53,7 @@ public class StationController implements Controller {
             StationRepository.addStation(new Station(stationName));
             outputView.printStationCreationResult();
         }
-        catch (IllegalStateException exception){
+        catch (Exception exception){
             outputView.printErrorMessage(exception.getMessage());
             createStation();
         }
