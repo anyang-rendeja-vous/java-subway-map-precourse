@@ -1,6 +1,7 @@
 package subway.view;
 
 import java.util.List;
+import subway.domain.Line;
 import subway.domain.Station;
 
 public class OutputView {
@@ -78,6 +79,13 @@ public class OutputView {
     public void successAddLine() {
         System.out.println();
         System.out.println(PREFIX + SUCCESSFUL_LINE_REGISTRATION);
+        System.out.println();
+    }
+
+    public void printAllLines(List<Line> lines) {
+        lines.stream()
+                .map(line -> PREFIX + line.getName())
+                .forEach(System.out::println);
         System.out.println();
     }
 }

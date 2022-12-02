@@ -72,7 +72,7 @@ public class SubwayController {
 
                 secondChoice = Integer.parseInt(secondChoiceStr);
 
-                // 라인 등록
+                // 노선 등록
                 if (secondChoice == 1) {
                     String lineName = inputView.inputLineNameToAdd();
                     String upbound = inputView.inputUpboundTerminusStation();
@@ -81,6 +81,10 @@ public class SubwayController {
                     outputView.successAddLine();
                 }
 
+                // 노선 조회
+                if (secondChoice == 3) {
+                    outputView.printAllLines(LineRepository.lines());
+                }
             }
         }
     }

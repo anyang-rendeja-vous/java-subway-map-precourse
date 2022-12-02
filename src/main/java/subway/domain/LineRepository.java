@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class LineRepository {
+
+    private static final String NOT_EXISTED_LINE = "존재하지 않는 노선입니다.";
     private static final List<Line> lines = new ArrayList<>();
 
     public static List<Line> lines() {
@@ -24,6 +26,6 @@ public class LineRepository {
         return lines.stream()
                 .filter(line -> line.getName().equals(findLine))
                 .findFirst()
-                .orElse(null);
+                .orElseThrow(() -> new IllegalArgumentException(NOT_EXISTED_LINE));
     }
 }

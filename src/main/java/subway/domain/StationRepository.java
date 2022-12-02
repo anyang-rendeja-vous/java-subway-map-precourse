@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class StationRepository {
+
+    private static final String NOT_EXISTED_STATION = "존재하지 않는 역입니다.";
     private static final List<Station> stations = new ArrayList<>();
 
     public static List<Station> stations() {
@@ -24,6 +26,6 @@ public class StationRepository {
         return stations.stream()
                 .filter(station -> station.getName().equals(findStation))
                 .findFirst()
-                .orElse(null);
+                .orElseThrow(() -> new IllegalArgumentException(NOT_EXISTED_STATION));
     }
 }
