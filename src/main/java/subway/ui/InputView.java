@@ -4,6 +4,7 @@ public class InputView {
     private static final String HASHTAG = "##";
     private static final String MAIN_MENU_OPENING = "메인 화면";
     private static final String STATION_MENU_OPENING = "역 관리 화면";
+    private static final String LINE_MENU_OPENING = "노선 관리 화면";
 
     private static final String MAIN_FIRST = "1. 역 관리";
     private static final String MAIN_SECOND = "2. 노선 관리";
@@ -14,6 +15,10 @@ public class InputView {
     private static final String STATION_FIRST = "1. 역 등록";
     private static final String STATION_SECOND = "2. 역 삭제";
     private static final String STATION_THIRD = "3. 역 조회";
+
+    private static final String LINE_FIRST = "1. 역 등록";
+    private static final String LINE_SECOND = "2. 역 삭제";
+    private static final String LINE_THIRD = "3. 역 조회";
 
     private static final String BACK = "B. 돌아가기";
 
@@ -41,7 +46,7 @@ public class InputView {
         System.out.println(HASHTAG + " " + STATION_MENU_OPENING);
         System.out
                 .println(STATION_FIRST + "\n" + STATION_SECOND + "\n" + STATION_THIRD + "\n" + BACK);
-
+        System.out.println();
     }
 
 
@@ -51,5 +56,12 @@ public class InputView {
 
     public void printStationsListOpening() {
         System.out.println(HASHTAG + " " + STATIONS_LIST_OPENING);
+    }
+
+    public void printLineChoicesMenu() {
+        System.out.println(HASHTAG + " " + LINE_MENU_OPENING);
+        System.out
+                .println(LINE_FIRST + "\n" + LINE_SECOND + "\n" + LINE_THIRD + "\n" + BACK);
+        System.out.println();
     }
 }
