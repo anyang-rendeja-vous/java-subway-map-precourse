@@ -1,6 +1,7 @@
 package subway.controller;
 
 import subway.InputReader;
+import subway.domain.Station;
 import subway.domain.StationRepository;
 
 public class StationController implements Controller {
@@ -21,12 +22,15 @@ public class StationController implements Controller {
     private void executeChoice(String choice){
         if (choice.equals("1")){
             createStation();
+            return;
         }
         if (choice.equals("2")){
             deleteStation();
+            return;
         }
         if (choice.equals("3")){
             getStationsList();
+            return;
         }
         if (choice.equals("B")){
             return;
@@ -35,7 +39,8 @@ public class StationController implements Controller {
     }
 
     private void createStation(){
-        StationRepository.addStation();
+        String stationName = inputReader.getUserInput();
+        StationRepository.addStation(new Station(stationName));
     }
 
     private void deleteStation(){

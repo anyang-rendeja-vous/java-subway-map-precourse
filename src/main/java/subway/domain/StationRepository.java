@@ -13,7 +13,15 @@ public class StationRepository {
     }
 
     public static void addStation(Station station) {
+        if (isDuplicatedName(station)){
+            throw new IllegalStateException("중복!");
+        }
         stations.add(station);
+    }
+
+    private static boolean isDuplicatedName(Station station) {
+        return stations.stream()
+                .anyMatch(x -> x.nameMatches(station));
     }
 
     public static boolean deleteStation(String name) {
