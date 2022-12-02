@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class InputView {
 
     private static final String ENTER_NUMBER = "## 원하는 기능을 선택하세요.";
-    private static final String ENTER_STATION_NAME = "## 등록할 역 이름을 입력하세요.";
+    private static final String ENTER_STATION_NAME_TO_ADD = "## 등록할 역 이름을 입력하세요.";
+    private static final String ENTER_STATION_NAME_TO_DELETE = "## 삭제할 역 이름을 입력하세요.";
     private final Scanner scanner;
 
     public InputView(Scanner scanner) {
@@ -30,8 +31,15 @@ public class InputView {
         return choice;
     }
 
-    public String inputStationName() {
-        System.out.println(ENTER_STATION_NAME);
+    public String inputStationNameToAdd() {
+        System.out.println(ENTER_STATION_NAME_TO_ADD);
+        String name = input();
+        return name;
+    }
+
+    public String inputStationNameToDelete() {
+        System.out.println();
+        System.out.println(ENTER_STATION_NAME_TO_DELETE);
         String name = input();
         return name;
     }

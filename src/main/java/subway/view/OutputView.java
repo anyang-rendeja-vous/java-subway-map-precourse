@@ -20,6 +20,7 @@ public class OutputView {
 
     private static final String PREFIX = "[INFO] ";
     private static final String SUCCESSFUL_STATION_REGISTRATION = "지하철 역이 등록되었습니다.";
+    private static final String SUCCESSFUL_STATION_DELETE = "지하철 역이 삭제되었습니다.";
 
     public void printInitialMenu() {
         System.out.println(MAIN);
@@ -43,6 +44,11 @@ public class OutputView {
 
     public void successAddStation() {
         System.out.println(PREFIX + SUCCESSFUL_STATION_REGISTRATION);
+    }
+
+    public void successDeleteStation() {
+        System.out.println();
+        System.out.println(PREFIX + SUCCESSFUL_STATION_DELETE);
     }
 
     public void printAllStations(List<Station> stations) {

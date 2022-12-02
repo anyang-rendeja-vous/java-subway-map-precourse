@@ -31,8 +31,14 @@ public class SubwayController {
 
             // 역 등록
             if (secondChoice == 1) {
-                createStation(inputView.inputStationName());
+                createStation(inputView.inputStationNameToAdd());
                 outputView.successAddStation();
+            }
+
+            // 역 삭제
+            if (secondChoice == 2) {
+                StationRepository.deleteStation(inputView.inputStationNameToDelete()); // 삭제할 수 없다면 false 반환 -> 예외 처리
+                outputView.successDeleteStation();
             }
 
             // 역 조회
