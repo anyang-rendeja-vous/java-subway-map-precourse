@@ -20,7 +20,7 @@ public class Station {
         if (name.length() < 2){
             throw new IllegalArgumentException(INVALID_STATION_NAME_LENGTH.getMessage());
         }
-        if (name.charAt(name.lastIndexOf(name))!='역'){
+        if (name.charAt(name.length() - 1)!='역'){
             throw new IllegalArgumentException(INVALID_STATION_NAME_STRUCT.getMessage());
         }
     }
