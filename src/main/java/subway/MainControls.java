@@ -18,8 +18,8 @@ public enum MainControls {
     LINES_PRINTER("4", SubwayPrinter::new),
     QUIT("Q", ProgramFinish::new);
 
-    private String choice;
-    private Supplier<Controller> controllerMaker;
+    private final String choice;
+    private final Supplier<Controller> controllerMaker;
 
     MainControls(String choice, Supplier<Controller> controllerMaker) {
         this.choice = choice;
@@ -32,7 +32,7 @@ public enum MainControls {
 
     public static MainControls getMatchingControls(String choice){
         return Arrays.stream(MainControls.values())
-                .filter(x -> x.choiceMatches(choice))
+                .filter(controls -> controls.choiceMatches(choice))
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException(INVALID_MAIN_CHOICE.getMessage()));
     }
