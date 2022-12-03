@@ -6,6 +6,7 @@ import static subway.ui.ErrorMessages.INVALID_MAIN_CHOICE;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import subway.domain.LineRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 import subway.ui.InputView;
@@ -65,10 +66,12 @@ public class StationController implements Controller {
 
     private void deleteStation() {
         inputView.printStationToDeleteOpening();
-        String stationName = getUserInput();
-        if (StationRepository.deleteStation(stationName)) // TODO: 에러 처리
-        {
-            outputView.printStationDeletionResult();
+        try {
+            String stationName = getUserInput();
+            StationRepository.deleteStationByName(stationName);
+        } catch (IllegalStateException exception) {
+            outputView.printErrorMessage(exception.getMessage());
+            deleteStation();
         }
     }
 
