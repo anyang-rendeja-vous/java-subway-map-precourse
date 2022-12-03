@@ -1,6 +1,6 @@
 package subway;
 
-import static subway.ChoiceMapper.executeByUserChoice;
+import static subway.ControllerMapper.executeByUserChoice;
 import static subway.InputReader.getUserInput;
 
 import subway.controller.Controller;

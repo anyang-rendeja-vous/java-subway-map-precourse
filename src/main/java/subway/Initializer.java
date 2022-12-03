@@ -10,7 +10,7 @@ import subway.domain.StationRepository;
 
 public class Initializer {
     private final List<String> initialStations
-            = Arrays.asList("교대역", "강남역", "역삼역", "남부터미널역", "양재역", "양재시민의숲역", "매봉역");
+            = List.of("교대역", "강남역", "역삼역", "남부터미널역", "양재역", "양재시민의숲역", "매봉역");
     private final Map<String, List<String>> initialLines
             = Map.of("2호선", List.of("교대역", "강남역", "역삼역"),
             "3호선", List.of("교대역", "남부터미널역", "양재역", "매봉역"),
