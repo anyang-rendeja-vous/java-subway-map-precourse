@@ -1,11 +1,11 @@
 package subway.controller;
 
+import static subway.InputReader.getUserInput;
 import static subway.ui.ErrorMessages.INVALID_MAIN_CHOICE;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import subway.InputReader;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 import subway.ui.InputView;
@@ -17,13 +17,11 @@ public class StationController implements Controller {
     private static final String GET_LIST = "3";
     private static final String BACK = "B";
 
-    private final InputReader inputReader;
     private final InputView inputView;
     private final OutputView outputView;
     private final Map<String, Runnable> commandMap = new HashMap<>();
 
     public StationController() {
-        inputReader = new InputReader();
         inputView = new InputView();
         outputView = new OutputView();
         mapInit();
@@ -45,7 +43,7 @@ public class StationController implements Controller {
     private void runCommand() {
         inputView.printUsersChoiceOpening();
         try {
-            String choice = inputReader.getUserInput();
+            String choice = getUserInput();
             commandMap.getOrDefault(choice, this::throwException).run();
         } catch (IllegalArgumentException exception) {
             outputView.printErrorMessage(exception.getMessage());
@@ -56,7 +54,7 @@ public class StationController implements Controller {
     private void createStation() {
         inputView.printStationChoiceOpening();
         try {
-            String stationName = inputReader.getUserInput();
+            String stationName = getUserInput();
             StationRepository.addStation(new Station(stationName));
             outputView.printStationCreationResult();
         } catch (Exception exception) {
@@ -67,7 +65,7 @@ public class StationController implements Controller {
 
     private void deleteStation() {
         inputView.printStationToDeleteOpening();
-        String stationName = inputReader.getUserInput();
+        String stationName = getUserInput();
         if (StationRepository.deleteStation(stationName)) // TODO: 에러 처리
         {
             outputView.printStationDeletionResult();

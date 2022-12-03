@@ -3,9 +3,9 @@ package subway;
 import java.util.Scanner;
 
 public class InputReader {
-    final Scanner scanner = new Scanner(System.in);
+    static final Scanner scanner = new Scanner(System.in);
 
-    public String getUserInput(){
+    public static String getUserInput(){
         return scanner.next();
     }
 }

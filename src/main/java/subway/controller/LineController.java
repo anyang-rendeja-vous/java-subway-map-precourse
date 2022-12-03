@@ -1,10 +1,10 @@
 package subway.controller;
 
+import static subway.InputReader.getUserInput;
 import static subway.ui.ErrorMessages.INVALID_MAIN_CHOICE;
 
 import java.util.HashMap;
 import java.util.Map;
-import subway.InputReader;
 import subway.ui.InputView;
 import subway.ui.OutputView;
 
@@ -14,14 +14,12 @@ public class LineController implements Controller {
     private static final String GET_LIST = "3";
     private static final String BACK = "B";
 
-    private final InputReader inputReader;
     private final InputView inputView;
     private final OutputView outputView;
     private final Map<String, Runnable> commandMap = new HashMap<>();
 
 
     public LineController() {
-        inputReader = new InputReader();
         inputView = new InputView();
         outputView = new OutputView();
         mapInit();
@@ -42,7 +40,7 @@ public class LineController implements Controller {
 
     private void runCommand() {
         try {
-            String choice = inputReader.getUserInput();
+            String choice = getUserInput();
             commandMap.getOrDefault(choice, this::throwException).run();
         } catch (IllegalArgumentException exception) {
             outputView.printErrorMessage(exception.getMessage());
