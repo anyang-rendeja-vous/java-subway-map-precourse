@@ -1,15 +1,16 @@
 package subway.domain;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 
 public class Line {
     private String name;
     private LinkedList<Station> stations = new LinkedList<>();
 
-    public Line(String name, Station inboundLast, Station outboundLast) {
+    public Line(String name, Station...stations) {
         this.name = name;
-        stations.add(inboundLast);
-        stations.add(outboundLast);
+        Arrays.stream(stations)
+                .forEach(this::addStation);
     }
 
     public String getName() {
@@ -17,4 +18,7 @@ public class Line {
     }
 
     // 추가 기능 구현
+    public void addStation(Station station){
+        stations.add(station);
+    }
 }
