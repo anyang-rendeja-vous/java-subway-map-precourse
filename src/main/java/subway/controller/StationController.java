@@ -6,7 +6,6 @@ import static subway.ui.ErrorMessages.INVALID_MAIN_CHOICE;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import subway.domain.LineRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 import subway.ui.InputView;

@@ -1,7 +1,6 @@
 package subway.domain;
 
 import static subway.ui.ErrorMessages.DUPLICATED_STATION_NAME;
-import static subway.ui.ErrorMessages.NONEXISTING_LINE;
 import static subway.ui.ErrorMessages.NONEXISTING_STATION;
 
 import java.util.ArrayList;
