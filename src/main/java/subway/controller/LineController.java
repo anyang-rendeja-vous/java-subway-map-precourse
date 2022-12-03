@@ -4,6 +4,7 @@ import static subway.InputReader.getUserInput;
 import static subway.ui.ErrorMessages.INVALID_MAIN_CHOICE;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import subway.domain.Line;
 import subway.domain.LineRepository;
@@ -96,6 +97,9 @@ public class LineController implements Controller {
     }
 
     private void getLinesList() {
+        inputView.printLineListOpening();
+        List<Line> lines = LineRepository.lines();
+        outputView.printLineList(lines);
     }
 
     private void goBack() {

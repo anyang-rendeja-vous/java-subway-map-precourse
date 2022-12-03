@@ -1,6 +1,7 @@
 package subway.ui;
 
 import java.util.List;
+import subway.domain.Line;
 import subway.domain.Station;
 
 public class OutputView {
@@ -34,5 +35,16 @@ public class OutputView {
 
     private void printSingleStation(Station station){
         System.out.println(INFO + " " + station.getName());
+    }
+
+    public void printLineList(List<Line> lines) {
+        for (Line line : lines){
+            printSingleLine(line);
+        }
+        System.out.println();
+    }
+
+    private void printSingleLine(Line line){
+        System.out.println(INFO + " " + line.getName());
     }
 }
