@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.function.Supplier;
 import subway.controller.Controller;
 import subway.controller.LineController;
+import subway.controller.ProgramFinish;
 import subway.controller.SectionController;
 import subway.controller.StationController;
 import subway.controller.SubwayPrinter;
@@ -14,7 +15,8 @@ public enum MainControls {
     STATION_CONTROL("1", StationController::new),
     LINE_CONTROL("2", LineController::new),
     SECTION_CONTROL("3", SectionController::new),
-    LINES_PRINTER("4", SubwayPrinter::new);
+    LINES_PRINTER("4", SubwayPrinter::new),
+    QUIT("Q", ProgramFinish::new);
 
     private String choice;
     private Supplier<Controller> controllerMaker;
@@ -22,10 +24,6 @@ public enum MainControls {
     MainControls(String choice, Supplier<Controller> controllerMaker) {
         this.choice = choice;
         this.controllerMaker = controllerMaker;
-    }
-
-    public String getChoice() {
-        return choice;
     }
 
     public Controller generatedController(){
