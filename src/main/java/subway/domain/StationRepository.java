@@ -1,7 +1,7 @@
 package subway.domain;
 
 import static subway.ui.ErrorMessages.DUPLICATED_STATION_NAME;
-import static subway.ui.ErrorMessages.NONEXISTING_STATION;
+import static subway.ui.ErrorMessages.NON_EXISTING_STATION;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,7 +24,7 @@ public class StationRepository {
 
     public static Station validateStation(Station station){
         if (!isDuplicatedName(station)){ // 존재하지 않으면 에러 !
-            throw new IllegalStateException(NONEXISTING_STATION.getMessage());
+            throw new IllegalStateException(NON_EXISTING_STATION.getMessage());
         }
         return station;
     }
@@ -39,7 +39,7 @@ public class StationRepository {
             stations.removeIf(station -> Objects.equals(station.getName(), name));
             return;
         }
-        throw new IllegalStateException(NONEXISTING_STATION.getMessage());
+        throw new IllegalStateException(NON_EXISTING_STATION.getMessage());
     }
 
     private static boolean isDeletable(String name) {
