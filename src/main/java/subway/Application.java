@@ -14,6 +14,7 @@ public class Application {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
 
+        new Initializer().subwayInit();
         while (isContinue) {
             Controller controller = getMatchingController(inputView, outputView);
             controller.execute();
