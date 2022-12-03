@@ -1,6 +1,7 @@
 package subway.domain;
 
 import static subway.ui.ErrorMessages.DUPLICATED_STATION_NAME;
+import static subway.ui.ErrorMessages.NONEXISTING_STATION;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,6 +20,13 @@ public class StationRepository {
             throw new IllegalStateException(DUPLICATED_STATION_NAME.getMessage());
         }
         stations.add(station);
+    }
+
+    public static Station validateStation(Station station){
+        if (!isDuplicatedName(station)){ // 존재하지 않으면 에러 !
+            throw new IllegalStateException(NONEXISTING_STATION.getMessage());
+        }
+        return station;
     }
 
     private static boolean isDuplicatedName(Station station) {

@@ -16,14 +16,17 @@ public class InputView {
     private static final String STATION_SECOND = "2. 역 삭제";
     private static final String STATION_THIRD = "3. 역 조회";
 
-    private static final String LINE_FIRST = "1. 역 등록";
-    private static final String LINE_SECOND = "2. 역 삭제";
-    private static final String LINE_THIRD = "3. 역 조회";
+    private static final String LINE_FIRST = "1. 노선 등록";
+    private static final String LINE_SECOND = "2. 노선 삭제";
+    private static final String LINE_THIRD = "3. 노선 조회";
 
     private static final String BACK = "B. 돌아가기";
 
     private static final String USERS_CHOICE_OPENING = "원하는 기능을 선택하세요.";
     private static final String STATION_CHOICE_OPENING = "등록할 역 이름을 입력하세요.";
+    private static final String LINE_CHOICE_OPENING = "등록할 노선 이름을 입력하세요.";
+    private static final String INBOUND_CHOICE_OPENING = "등록할 노선의 상행 종점역 이름을 입력하세요.";
+    private static final String OUTBOUND_CHOICE_OPENING = "등록할 노선의 하행 종점역 이름을 입력하세요.";
     private static final String STATION_TO_DELETE_OPENING = "삭제할 역 이름을 입력하세요.";
     private static final String STATIONS_LIST_OPENING = "역 목록";
 
@@ -49,7 +52,6 @@ public class InputView {
         System.out.println();
     }
 
-
     public void printStationToDeleteOpening() {
         System.out.println(HASHTAG + " " + STATION_TO_DELETE_OPENING);
     }
@@ -64,4 +66,17 @@ public class InputView {
                 .println(LINE_FIRST + "\n" + LINE_SECOND + "\n" + LINE_THIRD + "\n" + BACK);
         System.out.println();
     }
+
+    public void printLineChoiceOpening() {
+        System.out.println(HASHTAG + " " + LINE_CHOICE_OPENING);
+    }
+
+    public void printInboundStationChoiceOpening() {
+        System.out.println(HASHTAG + " " + INBOUND_CHOICE_OPENING);
+    }
+
+    public void printOutboundStationChoiceOpening() {
+        System.out.println(HASHTAG + " " + OUTBOUND_CHOICE_OPENING);
+    }
+
 }

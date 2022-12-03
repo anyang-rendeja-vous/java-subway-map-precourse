@@ -5,6 +5,10 @@ import static subway.ui.ErrorMessages.INVALID_MAIN_CHOICE;
 
 import java.util.HashMap;
 import java.util.Map;
+import subway.domain.Line;
+import subway.domain.LineRepository;
+import subway.domain.Station;
+import subway.domain.StationRepository;
 import subway.ui.InputView;
 import subway.ui.OutputView;
 
@@ -49,6 +53,43 @@ public class LineController implements Controller {
     }
 
     private void createLine() {
+        String lineName = getLineInput();
+        Station inboundLastStation = getInboundLastStationInput();
+        Station outboundLastStation = getOutboundLastStationInput();
+        LineRepository.addLine(new Line(lineName, inboundLastStation, outboundLastStation));
+    }
+
+    private String getLineInput() {
+        inputView.printLineChoiceOpening();
+        try {
+            String line = getUserInput();
+            return LineRepository.validateLineName(line);
+        } catch (IllegalArgumentException exception) {
+            outputView.printErrorMessage(exception.getMessage());
+            return getLineInput();
+        }
+    }
+
+    private Station getInboundLastStationInput() {
+        inputView.printInboundStationChoiceOpening();
+        try {
+            String inboundLast = getUserInput();
+            return StationRepository.validateStation(new Station(inboundLast));
+        } catch (Exception exception) {
+            outputView.printErrorMessage(exception.getMessage());
+            return getInboundLastStationInput();
+        }
+    }
+
+    private Station getOutboundLastStationInput() {
+        inputView.printOutboundStationChoiceOpening();
+        try {
+            String outboundLast = getUserInput();
+            return StationRepository.validateStation(new Station(outboundLast));
+        } catch (Exception exception) {
+            outputView.printErrorMessage(exception.getMessage());
+            return getOutboundLastStationInput();
+        }
     }
 
     private void deleteLine() {
