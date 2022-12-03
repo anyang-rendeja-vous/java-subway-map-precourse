@@ -94,6 +94,14 @@ public class LineController implements Controller {
     }
 
     private void deleteLine() {
+        inputView.printLineToDeleteOpening();
+        try {
+            String lineName = getUserInput();
+            LineRepository.deleteLineByName(lineName);
+        } catch (IllegalStateException exception) {
+            outputView.printErrorMessage(exception.getMessage());
+            deleteLine();
+        }
     }
 
     private void getLinesList() {

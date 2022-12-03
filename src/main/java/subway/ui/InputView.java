@@ -30,6 +30,7 @@ public class InputView {
     private static final String STATION_TO_DELETE_OPENING = "삭제할 역 이름을 입력하세요.";
     private static final String STATIONS_LIST_OPENING = "역 목록";
     private static final String LINES_LIST_OPENING = "노선 목록";
+    private static final String LINE_TO_DELETE_OPENING = "삭제할 노선 이름을 입력하세요.";
 
     public void printMainChoicesMenu() {
         System.out.println(HASHTAG + " " + MAIN_MENU_OPENING);
@@ -82,5 +83,9 @@ public class InputView {
 
     public void printLineListOpening() {
         System.out.println(HASHTAG + " " + LINES_LIST_OPENING);
+    }
+
+    public void printLineToDeleteOpening() {
+        System.out.println(HASHTAG + " " + LINE_TO_DELETE_OPENING);
     }
 }

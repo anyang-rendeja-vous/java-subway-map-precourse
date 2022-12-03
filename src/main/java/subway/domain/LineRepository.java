@@ -2,6 +2,7 @@ package subway.domain;
 
 import static subway.ui.ErrorMessages.INVALID_LINE_NAME_LENGTH;
 import static subway.ui.ErrorMessages.INVALID_LINE_NAME_STRUCT;
+import static subway.ui.ErrorMessages.NONEXISTING_LINE;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,8 +20,17 @@ public class LineRepository {
         lines.add(line);
     }
 
-    public static boolean deleteLineByName(String name) {
-        return lines.removeIf(line -> Objects.equals(line.getName(), name));
+    public static void deleteLineByName(String name) {
+        if (isDeletable(name)){
+            lines.removeIf(line -> Objects.equals(line.getName(), name));
+            return;
+        }
+        throw new IllegalStateException(NONEXISTING_LINE.getMessage());
+    }
+
+    private static boolean isDeletable(String name) {
+        return lines.stream()
+                .anyMatch(line -> Objects.equals(line.getName(), name));
     }
 
     public static String validateLineName(String lineInput){

@@ -6,6 +6,8 @@ public enum ErrorMessages {
     DUPLICATED_STATION_NAME("이미 등록된 역 이름입니다."),
 
     NONEXISTING_STATION("존재하지 않는 역 입니다."),
+    NONEXISTING_LINE("존재하지 않는 노선입니다."),
+
     INVALID_STATION_NAME_LENGTH("역 이름은 두글자 이상이여야 합니다."),
     INVALID_STATION_NAME_STRUCT("형식에 맞게 입력해주세요 (~역)"),
     INVALID_LINE_NAME_LENGTH("노선 이름은 두글자 이상이여야 합니다."),
