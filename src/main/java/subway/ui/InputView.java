@@ -20,8 +20,9 @@ public class InputView {
     private static final String TO_CREATE_OPENING = "등록할 %s 이름을 입력하세요.";
     private static final String TO_DELETE_OPENING = "삭제할 %s 이름을 입력하세요.";
     private static final String LAST_STATION_OPENING = "등록할 노선의 %s 종점역 이름을 입력하세요.";
-    private static final String SECTION_INPUT_OPENING = "%s을 입력하세요.";
 
+    private static final String SECTION_INPUT_OPENING = "%s을 입력하세요.";
+    private static final String SECTION_DELETION_OPENING = "삭제할 구간의 %s을 입력하세요.";
     private static final String LIST_OPENING = "%s 목록";
     private static final String SUBWAY_LIST = "지하철 노선도";
 
@@ -79,6 +80,11 @@ public class InputView {
     public void printSectionsInputOpening(String subject){
         System.out.println();
         System.out.printf(HASHTAG + " " + SECTION_INPUT_OPENING + "\n", subject);
+    }
+
+    public void printSectionsDeletionOpening(String subject){
+        System.out.println();
+        System.out.printf(HASHTAG + " " + SECTION_DELETION_OPENING + "\n", subject);
     }
 
 }

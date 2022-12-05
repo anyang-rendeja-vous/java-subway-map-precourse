@@ -11,6 +11,7 @@ public class OutputView {
     private static final String DELETED = "지하철 %s이 삭제되었습니다.";
 
     private static final String SECTION_INSERTED = "구간이 등록되었습니다.";
+    private static final String SECTION_DELETED = "구간이 삭제되었습니다.";
 
     public void printErrorMessage(String message){
         System.out.println();
@@ -26,6 +27,11 @@ public class OutputView {
     public void printSectionInsertedResult(){
         System.out.println();
         System.out.println(INFO + " " + SECTION_INSERTED);
+    }
+
+    public void printSectionDeletedResult() {
+        System.out.println();
+        System.out.println(INFO + " " + SECTION_DELETED);
     }
 
     public void printDeletionResult(String subject){

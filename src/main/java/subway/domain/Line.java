@@ -51,4 +51,12 @@ public class Line extends Domain{
     public void insertStation(Station station, Integer order){
         stations.add(order - 1, station);
     }
+
+    public boolean isDeletableInSize(){
+        return stations.size() > 2;
+    }
+
+    public void removeStation(Station station) {
+        stations.remove(station);
+    }
 }

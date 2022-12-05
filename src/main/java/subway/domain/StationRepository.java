@@ -46,4 +46,11 @@ public class StationRepository {
         return stations.stream()
                 .anyMatch(station -> Objects.equals(station.getName(), name));
     }
+
+    public static Station getStationByName(String stationName) {
+        return stations.stream()
+                .filter(station -> station.getName().equals(stationName))
+                .findFirst()
+                .orElseThrow(() -> new IllegalStateException(NON_EXISTING_STATION.getMessage()));
+    }
 }

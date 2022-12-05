@@ -99,7 +99,27 @@ public class SectionController implements Controller {
     }
 
     private void deleteStationFromLine() {
+        Line line = getLineInput();
+        Station station = getStationInLineInput(line);
+        delete(line, station); // TO FIX : 삭제 안됨 !
+    }
 
+    private void delete(Line line, Station station) {
+        LineRepository.deleteStationInLine(line, station);
+        outputView.printSectionDeletedResult();
+    }
+
+    private Station getStationInLineInput(Line line){
+        inputView.printSectionsInputOpening(STATION);
+        try {
+            String station = getUserInput();
+            Station existingStation = StationRepository.getStationByName(station);
+            LineRepository.validateIfStationInLine(line, existingStation); // 해당 노선에 역이 존재해야
+            return existingStation;
+        } catch (Exception exception) {
+            outputView.printErrorMessage(exception.getMessage());
+            return getStationInput(line);
+        }
     }
 
     private void goBack() {

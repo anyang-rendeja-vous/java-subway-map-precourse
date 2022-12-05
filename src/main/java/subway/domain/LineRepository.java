@@ -2,9 +2,11 @@ package subway.domain;
 
 import static subway.domain.Line.validateName;
 import static subway.ui.ErrorMessages.DUPLICATED_LINE_NAME;
+import static subway.ui.ErrorMessages.FORBIDDEN_STATION_TO_DELETE;
 import static subway.ui.ErrorMessages.FORBIDDEN_STATION_TO_INSERT;
 import static subway.ui.ErrorMessages.INVALID_ORDER_INPUT;
 import static subway.ui.ErrorMessages.NON_EXISTING_LINE;
+import static subway.ui.ErrorMessages.UNABLE_TO_DELETE;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -66,9 +68,23 @@ public class LineRepository {
         }
     }
 
+    public static void validateIfStationInLine(Line line, Station existingStation) {
+        if (!line.stationExists(existingStation)){
+            throw new IllegalStateException(FORBIDDEN_STATION_TO_DELETE.getMessage());
+        }
+    }
+
     public static void validateOrderInRange(Line line, Integer order) {
         if (!line.isInRange(order)){
             throw new IllegalStateException(INVALID_ORDER_INPUT.getMessage());
         }
+    }
+
+    public static void deleteStationInLine(Line line, Station station) {
+        if (line.isDeletableInSize()){
+            line.removeStation(station);
+            return;
+        }
+        throw new IllegalStateException(UNABLE_TO_DELETE.getMessage());
     }
 }
