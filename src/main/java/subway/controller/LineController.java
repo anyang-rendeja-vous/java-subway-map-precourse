@@ -44,6 +44,7 @@ public class LineController implements Controller {
     }
 
     private void runCommand() {
+        inputView.printUsersChoiceOpening();
         try {
             String choice = getUserInput();
             commandMap.getOrDefault(choice, this::throwException).run();
