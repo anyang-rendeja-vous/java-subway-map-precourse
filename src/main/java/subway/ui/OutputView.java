@@ -8,24 +8,24 @@ public class OutputView {
     private static final String INFO = "[INFO]";
     private static final String ERROR = "[ERROR]";
 
-    private static final String STATION_CREATED = "지하철 역이 등록되었습니다.";
-    private static final String STATION_DELETED = "지하철 역이 삭제되었습니다.";
-    private static final String LINE_CREATED = "지하철 노선이 등록되었습니다.";
-    private static final String LINE_DELETED = "지하철 노선이 삭제되었습니다.";
+    private static final String CREATED = "지하철 %s이 등록되었습니다.";
+    private static final String DELETED = "지하철 %s이 삭제되었습니다.";
 
     public void printErrorMessage(String message){
         System.out.println();
         System.out.println(ERROR + " " + message);
     }
 
-    public void printStationCreationResult(){
+    public void printCreationResult(String subject){
         System.out.println();
-        System.out.println(INFO + " " + STATION_CREATED);
+        System.out.printf(INFO + " " + CREATED, subject);
+        System.out.println();
     }
 
-    public void printStationDeletionResult(){
+    public void printDeletionResult(String subject){
         System.out.println();
-        System.out.println(INFO + " " + STATION_DELETED);
+        System.out.printf(INFO + " " + DELETED, subject);
+        System.out.println();
     }
 
     public void printStationsList(List<Station> stations) {
@@ -37,18 +37,6 @@ public class OutputView {
 
     private void printSingleStation(Station station){
         System.out.println(INFO + " " + station.getName());
-    }
-
-    public void printLineCreationResult(){
-        System.out.println();
-        System.out.println(INFO + " " + LINE_CREATED);
-        System.out.println();
-    }
-
-    public void printLineDeletionResult(){
-        System.out.println();
-        System.out.println(INFO + " " + LINE_DELETED);
-        System.out.println();
     }
 
     public void printLineList(List<Line> lines) {

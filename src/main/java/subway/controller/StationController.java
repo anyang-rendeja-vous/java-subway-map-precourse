@@ -12,6 +12,7 @@ import subway.ui.InputView;
 import subway.ui.OutputView;
 
 public class StationController implements Controller {
+    private static final String STATION = "역";
     private static final String CREATE = "1";
     private static final String DELETE = "2";
     private static final String GET_LIST = "3";
@@ -56,7 +57,7 @@ public class StationController implements Controller {
         try {
             String stationName = getUserInput();
             StationRepository.addStation(new Station(stationName));
-            outputView.printStationCreationResult();
+            outputView.printCreationResult(STATION);
         } catch (Exception exception) {
             outputView.printErrorMessage(exception.getMessage());
             createStation();
@@ -68,7 +69,7 @@ public class StationController implements Controller {
         try {
             String stationName = getUserInput();
             StationRepository.deleteStationByName(stationName);
-            outputView.printStationDeletionResult();
+            outputView.printDeletionResult(STATION);
         } catch (IllegalStateException exception) {
             outputView.printErrorMessage(exception.getMessage());
             deleteStation();

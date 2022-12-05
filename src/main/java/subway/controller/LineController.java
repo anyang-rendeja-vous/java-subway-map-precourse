@@ -14,6 +14,7 @@ import subway.ui.InputView;
 import subway.ui.OutputView;
 
 public class LineController implements Controller {
+    private static final String LINE = "노선";
     private static final String CREATE = "1";
     private static final String DELETE = "2";
     private static final String GET_LIST = "3";
@@ -59,7 +60,7 @@ public class LineController implements Controller {
         Station inboundLastStation = getInboundLastStationInput();
         Station outboundLastStation = getOutboundLastStationInput();
         LineRepository.addLine(new Line(lineName, inboundLastStation, outboundLastStation));
-        outputView.printLineCreationResult();
+        outputView.printCreationResult(LINE);
     }
 
     private String getLineInput() {
@@ -100,7 +101,7 @@ public class LineController implements Controller {
         try {
             String lineName = getUserInput();
             LineRepository.deleteLineByName(lineName);
-            outputView.printLineDeletionResult();
+            outputView.printDeletionResult(LINE);
         } catch (IllegalStateException exception) {
             outputView.printErrorMessage(exception.getMessage());
             deleteLine();
