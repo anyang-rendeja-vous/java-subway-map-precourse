@@ -6,6 +6,7 @@ import static subway.ui.ErrorMessages.INVALID_MAIN_CHOICE;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import subway.domain.Domain;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 import subway.ui.InputView;
@@ -78,8 +79,8 @@ public class StationController implements Controller {
 
     private void getStationsList() {
         inputView.printListOpening(STATION);
-        List<Station> stations = StationRepository.stations();
-        outputView.printStationsList(stations);
+        List<Domain> stations = StationRepository.stations();
+        outputView.printDomainList(stations);
     }
 
     private void goBack() {

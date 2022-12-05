@@ -6,21 +6,16 @@ import static subway.ui.ErrorMessages.INVALID_LINE_NAME_STRUCT;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-public class Line {
+public class Line extends Domain{
     private static final String LINE_SUFFIX = "선";
     private static final int NAME_LENGTH = 2;
 
-    private final String name;
     private final LinkedList<Station> stations = new LinkedList<>();
 
     public Line(String name, Station...stations) {
         this.name = name;
         Arrays.stream(stations)
                 .forEach(this::addStation);
-    }
-
-    public String getName() {
-        return name;
     }
 
     // 추가 기능 구현

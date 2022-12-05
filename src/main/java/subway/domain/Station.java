@@ -3,19 +3,13 @@ package subway.domain;
 import static subway.ui.ErrorMessages.INVALID_STATION_NAME_LENGTH;
 import static subway.ui.ErrorMessages.INVALID_STATION_NAME_STRUCT;
 
-public class Station {
+public class Station extends Domain{
     private static final String STATION_SUFFIX = "역";
     private static final int NAME_LENGTH = 2;
-
-    private final String name;
 
     public Station(String name) {
         validateName(name);
         this.name = name;
-    }
-
-    public String getName() {
-        return name;
     }
 
     // 추가 기능 구현

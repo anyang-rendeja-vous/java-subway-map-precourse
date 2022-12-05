@@ -1,8 +1,7 @@
 package subway.ui;
 
 import java.util.List;
-import subway.domain.Line;
-import subway.domain.Station;
+import subway.domain.Domain;
 
 public class OutputView {
     private static final String INFO = "[INFO]";
@@ -28,23 +27,14 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printStationsList(List<Station> stations) {
-        for (Station station : stations) {
-            printSingleStation(station);
+    public void printDomainList(List<Domain> subjects) {
+        for (Domain subject : subjects) {
+            printSingleDomain(subject);
         }
     }
 
-    private void printSingleStation(Station station){
-        System.out.println(INFO + " " + station.getName());
+    private void printSingleDomain(Domain subject){
+        System.out.println(INFO + " " + subject.getName());
     }
 
-    public void printLineList(List<Line> lines) {
-        for (Line line : lines){
-            printSingleLine(line);
-        }
-    }
-
-    private void printSingleLine(Line line){
-        System.out.println(INFO + " " + line.getName());
-    }
 }

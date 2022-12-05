@@ -11,7 +11,7 @@ import java.util.Objects;
 public class StationRepository {
     private static final List<Station> stations = new ArrayList<>();
 
-    public static List<Station> stations() {
+    public static List<Domain> stations() {
         return Collections.unmodifiableList(stations);
     }
 
