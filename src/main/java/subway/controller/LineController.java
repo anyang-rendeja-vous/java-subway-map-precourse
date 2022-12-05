@@ -59,6 +59,7 @@ public class LineController implements Controller {
         Station inboundLastStation = getInboundLastStationInput();
         Station outboundLastStation = getOutboundLastStationInput();
         LineRepository.addLine(new Line(lineName, inboundLastStation, outboundLastStation));
+        outputView.printLineCreationResult();
     }
 
     private String getLineInput() {
@@ -99,6 +100,7 @@ public class LineController implements Controller {
         try {
             String lineName = getUserInput();
             LineRepository.deleteLineByName(lineName);
+            outputView.printLineDeletionResult();
         } catch (IllegalStateException exception) {
             outputView.printErrorMessage(exception.getMessage());
             deleteLine();

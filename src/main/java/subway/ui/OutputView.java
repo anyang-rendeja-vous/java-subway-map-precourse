@@ -10,6 +10,8 @@ public class OutputView {
 
     private static final String STATION_CREATED = "지하철 역이 등록되었습니다.";
     private static final String STATION_DELETED = "지하철 역이 삭제되었습니다.";
+    private static final String LINE_CREATED = "지하철 노선이 등록되었습니다.";
+    private static final String LINE_DELETED = "지하철 노선이 삭제되었습니다.";
 
     public void printErrorMessage(String message){
         System.out.println(ERROR + " " + message);
@@ -35,6 +37,16 @@ public class OutputView {
 
     private void printSingleStation(Station station){
         System.out.println(INFO + " " + station.getName());
+    }
+
+    public void printLineCreationResult(){
+        System.out.println(INFO + " " + LINE_CREATED);
+        System.out.println();
+    }
+
+    public void printLineDeletionResult(){
+        System.out.println(INFO + " " + LINE_DELETED);
+        System.out.println();
     }
 
     public void printLineList(List<Line> lines) {
