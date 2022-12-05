@@ -20,7 +20,7 @@ public class InputView {
     private static final String TO_CREATE_OPENING = "등록할 %s 이름을 입력하세요.";
     private static final String TO_DELETE_OPENING = "삭제할 %s 이름을 입력하세요.";
     private static final String LAST_STATION_OPENING = "등록할 노선의 %s 종점역 이름을 입력하세요.";
-    private static final String SECTION_INPUT_OPENING = "%을 입력하세요.";
+    private static final String SECTION_INPUT_OPENING = "%s을 입력하세요.";
 
     private static final String LIST_OPENING = "%s 목록";
     private static final String SUBWAY_LIST = "지하철 노선도";

@@ -35,6 +35,10 @@ public class LineRepository {
                 .anyMatch(line -> Objects.equals(line.getName(), name));
     }
 
+    public static void insertStationToLine(Line line, Station station, Integer order){
+        line.insertStation(station, order);
+    }
+
     public static String validateLineToAdd(String lineInput){
         validateName(lineInput);
         if (isDuplicatedLine(lineInput)){

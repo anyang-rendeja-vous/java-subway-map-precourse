@@ -55,6 +55,8 @@ public class SectionController implements Controller {
         Line line = getLineInput();
         Station station = getStationInput(line);
         Integer order = getInsertOrder(line);
+        LineRepository.insertStationToLine(line, station, order);
+        outputView.printSectionInsertedResult();
     }
 
     private Line getLineInput() {

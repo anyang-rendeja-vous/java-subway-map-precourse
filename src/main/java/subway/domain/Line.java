@@ -47,4 +47,8 @@ public class Line extends Domain{
     public boolean isInRange(Integer order){
         return 1 <= order && order <= stations.size();
     }
+
+    public void insertStation(Station station, Integer order){
+        stations.add(order - 1, station);
+    }
 }
