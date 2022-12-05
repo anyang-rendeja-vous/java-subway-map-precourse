@@ -1,7 +1,5 @@
 package subway.controller;
 
-import java.util.ArrayList;
-import subway.domain.Domain;
 import subway.domain.Line;
 import subway.domain.LineRepository;
 import subway.ui.InputView;
