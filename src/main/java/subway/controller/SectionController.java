@@ -14,6 +14,9 @@ import subway.ui.OutputView;
 
 public class SectionController implements Controller {
     private static final String SECTION = "구간";
+    private static final String LINE = "노선";
+    private static final String STATION = "역";
+    private static final String ORDER = "순서";
     private static final String INSERT = "1";
     private static final String DELETE = "2";
     private static final String BACK = "B";
@@ -60,7 +63,7 @@ public class SectionController implements Controller {
     }
 
     private Line getLineInput() {
-        inputView.printSectionsInputOpening("노선");
+        inputView.printSectionsInputOpening(LINE);
         try {
             String line = getUserInput();
             return LineRepository.getExistingLine(line);
@@ -71,7 +74,7 @@ public class SectionController implements Controller {
     }
 
     private Station getStationInput(Line line){
-        inputView.printSectionsInputOpening("역");
+        inputView.printSectionsInputOpening(STATION);
         try {
             String station = getUserInput();
             Station existingStation = StationRepository.validateStation(new Station(station));
@@ -84,7 +87,7 @@ public class SectionController implements Controller {
     }
 
     private Integer getInsertOrder(Line line) {
-        inputView.printSectionsInputOpening("순서");
+        inputView.printSectionsInputOpening(ORDER);
         try {
             Integer order = Integer.parseInt(getUserInput());
             LineRepository.validateOrderInRange(line, order); // 해당 노선의 범위 내에 있는 입력인지
