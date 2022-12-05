@@ -3,6 +3,7 @@ package subway.domain;
 import static subway.domain.Line.validateName;
 import static subway.ui.ErrorMessages.DUPLICATED_LINE_NAME;
 import static subway.ui.ErrorMessages.FORBIDDEN_STATION_TO_INSERT;
+import static subway.ui.ErrorMessages.INVALID_ORDER_INPUT;
 import static subway.ui.ErrorMessages.NON_EXISTING_LINE;
 
 import java.util.ArrayList;
@@ -56,8 +57,14 @@ public class LineRepository {
     }
 
     public static void validateIfStationExistsInLine(Line line, Station existingStation) {
-        if(line.stationExists(existingStation)){
+        if (line.stationExists(existingStation)){
             throw new IllegalStateException(FORBIDDEN_STATION_TO_INSERT.getMessage());
+        }
+    }
+
+    public static void validateOrderInRange(Line line, Integer order) {
+        if (!line.isInRange(order)){
+            throw new IllegalStateException(INVALID_ORDER_INPUT.getMessage());
         }
     }
 }

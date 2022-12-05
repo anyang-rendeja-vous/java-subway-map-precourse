@@ -54,6 +54,7 @@ public class SectionController implements Controller {
     private void insertStationToLine() {
         Line line = getLineInput();
         Station station = getStationInput(line);
+        Integer order = getInsertOrder(line);
     }
 
     private Line getLineInput() {
@@ -77,6 +78,18 @@ public class SectionController implements Controller {
         } catch (Exception exception) {
             outputView.printErrorMessage(exception.getMessage());
             return getStationInput(line);
+        }
+    }
+
+    private Integer getInsertOrder(Line line) {
+        inputView.printSectionsInputOpening("순서");
+        try {
+            Integer order = Integer.parseInt(getUserInput());
+            LineRepository.validateOrderInRange(line, order); // 해당 노선의 범위 내에 있는 입력인지
+            return order;
+        } catch (Exception exception) {
+            outputView.printErrorMessage(exception.getMessage());
+            return getInsertOrder(line);
         }
     }
 

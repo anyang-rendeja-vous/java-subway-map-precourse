@@ -43,4 +43,8 @@ public class Line extends Domain{
                 .stream()
                 .anyMatch(singleStation -> singleStation.nameMatches(station));
     }
+
+    public boolean isInRange(Integer order){
+        return 1 <= order && order <= stations.size();
+    }
 }

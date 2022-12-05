@@ -13,7 +13,8 @@ public enum ErrorMessages {
     NON_EXISTING_LINE("존재하지 않는 노선입니다."),
     NON_EXISTING_STATION("존재하지 않는 역 입니다."),
 
-    FORBIDDEN_STATION_TO_INSERT("해당 노선에 존재하는 역입니다.");
+    FORBIDDEN_STATION_TO_INSERT("해당 노선에 존재하는 역입니다."),
+    INVALID_ORDER_INPUT("해당 노선 범위 밖 입니다.");
 
     private final String message;
 
