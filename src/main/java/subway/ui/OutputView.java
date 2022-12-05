@@ -19,13 +19,13 @@ public class OutputView {
     }
 
     public void printStationCreationResult(){
-        System.out.println(INFO + " " + STATION_CREATED);
         System.out.println();
+        System.out.println(INFO + " " + STATION_CREATED);
     }
 
     public void printStationDeletionResult(){
-        System.out.println(INFO + " " + STATION_DELETED);
         System.out.println();
+        System.out.println(INFO + " " + STATION_DELETED);
     }
 
     public void printStationsList(List<Station> stations) {
@@ -40,11 +40,13 @@ public class OutputView {
     }
 
     public void printLineCreationResult(){
+        System.out.println();
         System.out.println(INFO + " " + LINE_CREATED);
         System.out.println();
     }
 
     public void printLineDeletionResult(){
+        System.out.println();
         System.out.println(INFO + " " + LINE_DELETED);
         System.out.println();
     }

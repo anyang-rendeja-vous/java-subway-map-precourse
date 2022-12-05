@@ -44,10 +44,12 @@ public class InputView {
     }
 
     public void printStationChoiceOpening() {
+        System.out.println();
         System.out.println(HASHTAG + " " + STATION_CHOICE_OPENING);
     }
 
     public void printStationsChoicesMenu() {
+        System.out.println();
         System.out.println(HASHTAG + " " + STATION_MENU_OPENING);
         System.out
                 .println(STATION_FIRST + "\n" + STATION_SECOND + "\n" + STATION_THIRD + "\n" + BACK);
@@ -59,10 +61,12 @@ public class InputView {
     }
 
     public void printStationsListOpening() {
+        System.out.println();
         System.out.println(HASHTAG + " " + STATIONS_LIST_OPENING);
     }
 
     public void printLineChoicesMenu() {
+        System.out.println();
         System.out.println(HASHTAG + " " + LINE_MENU_OPENING);
         System.out
                 .println(LINE_FIRST + "\n" + LINE_SECOND + "\n" + LINE_THIRD + "\n" + BACK);
@@ -70,18 +74,22 @@ public class InputView {
     }
 
     public void printLineChoiceOpening() {
+        System.out.println();
         System.out.println(HASHTAG + " " + LINE_CHOICE_OPENING);
     }
 
     public void printInboundStationChoiceOpening() {
+        System.out.println();
         System.out.println(HASHTAG + " " + INBOUND_CHOICE_OPENING);
     }
 
     public void printOutboundStationChoiceOpening() {
+        System.out.println();
         System.out.println(HASHTAG + " " + OUTBOUND_CHOICE_OPENING);
     }
 
     public void printLineListOpening() {
+        System.out.println();
         System.out.println(HASHTAG + " " + LINES_LIST_OPENING);
     }
 
