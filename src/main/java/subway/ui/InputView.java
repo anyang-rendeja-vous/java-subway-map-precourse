@@ -48,6 +48,13 @@ public class InputView {
         System.out.println();
     }
 
+    public void printSectionsMenu(String subject) {
+        System.out.println();
+        System.out.printf(HASHTAG + " " + FEATURE_MENU_OPENING + "\n", subject);
+        System.out.printf(FIRST_FEATURE + "\n" + SECOND_FEATURE + "\n" + BACK + "\n", subject, subject);
+        System.out.println();
+    }
+
     public void printDeleteChoiceOpening(String subject) {
         System.out.println();
         System.out.printf(HASHTAG + " " + TO_DELETE_OPENING + "\n", subject);
