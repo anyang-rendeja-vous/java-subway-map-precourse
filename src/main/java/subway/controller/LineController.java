@@ -15,6 +15,8 @@ import subway.ui.OutputView;
 
 public class LineController implements Controller {
     private static final String LINE = "노선";
+    private static final String INBOUND = "상행";
+    private static final String OUTBOUND = "하행";
     private static final String CREATE = "1";
     private static final String DELETE = "2";
     private static final String GET_LIST = "3";
@@ -64,7 +66,7 @@ public class LineController implements Controller {
     }
 
     private String getLineInput() {
-        inputView.printLineChoiceOpening();
+        inputView.printCreationChoiceOpening(LINE);
         try {
             String line = getUserInput();
             return LineRepository.validateLineName(line);
@@ -75,7 +77,7 @@ public class LineController implements Controller {
     }
 
     private Station getInboundLastStationInput() {
-        inputView.printInboundStationChoiceOpening();
+        inputView.printLastStationChoiceOpening(INBOUND);
         try {
             String inboundLast = getUserInput();
             return StationRepository.validateStation(new Station(inboundLast));
@@ -86,7 +88,7 @@ public class LineController implements Controller {
     }
 
     private Station getOutboundLastStationInput() {
-        inputView.printOutboundStationChoiceOpening();
+        inputView.printLastStationChoiceOpening(OUTBOUND);
         try {
             String outboundLast = getUserInput();
             return StationRepository.validateStation(new Station(outboundLast));
@@ -97,7 +99,7 @@ public class LineController implements Controller {
     }
 
     private void deleteLine() {
-        inputView.printLineToDeleteOpening();
+        inputView.printDeleteChoiceOpening(LINE);
         try {
             String lineName = getUserInput();
             LineRepository.deleteLineByName(lineName);
@@ -109,7 +111,7 @@ public class LineController implements Controller {
     }
 
     private void getLinesList() {
-        inputView.printLineListOpening();
+        inputView.printListOpening(LINE);
         List<Line> lines = LineRepository.lines();
         outputView.printLineList(lines);
     }

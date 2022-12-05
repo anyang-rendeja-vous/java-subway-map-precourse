@@ -17,14 +17,10 @@ public class InputView {
     private static final String BACK = "B. 돌아가기";
 
     private static final String USERS_CHOICE_OPENING = "원하는 기능을 선택하세요.";
-    private static final String STATION_CHOICE_OPENING = "등록할 역 이름을 입력하세요.";
-    private static final String LINE_CHOICE_OPENING = "등록할 노선 이름을 입력하세요.";
-    private static final String INBOUND_CHOICE_OPENING = "등록할 노선의 상행 종점역 이름을 입력하세요.";
-    private static final String OUTBOUND_CHOICE_OPENING = "등록할 노선의 하행 종점역 이름을 입력하세요.";
-    private static final String STATION_TO_DELETE_OPENING = "삭제할 역 이름을 입력하세요.";
-    private static final String STATIONS_LIST_OPENING = "역 목록";
-    private static final String LINES_LIST_OPENING = "노선 목록";
-    private static final String LINE_TO_DELETE_OPENING = "삭제할 노선 이름을 입력하세요.";
+    private static final String TO_CREATE_OPENING = "등록할 %s 이름을 입력하세요.";
+    private static final String TO_DELETE_OPENING = "삭제할 %s 이름을 입력하세요.";
+    private static final String LAST_STATION_OPENING = "등록할 노선의 %s 종점역 이름을 입력하세요.";
+    private static final String LIST_OPENING = "%s 목록";
 
     public void printMainChoicesMenu() {
         System.out.println();
@@ -38,9 +34,9 @@ public class InputView {
         System.out.println(HASHTAG + " " + USERS_CHOICE_OPENING);
     }
 
-    public void printStationChoiceOpening() {
+    public void printCreationChoiceOpening(String subject) {
         System.out.println();
-        System.out.println(HASHTAG + " " + STATION_CHOICE_OPENING);
+        System.out.printf(HASHTAG + " " + TO_CREATE_OPENING + "\n", subject);
     }
 
     public void printFeaturesMenu(String subject) {
@@ -50,38 +46,18 @@ public class InputView {
         System.out.println();
     }
 
-    public void printStationToDeleteOpening() {
+    public void printDeleteChoiceOpening(String subject) {
         System.out.println();
-        System.out.println(HASHTAG + " " + STATION_TO_DELETE_OPENING);
+        System.out.printf(HASHTAG + " " + TO_DELETE_OPENING + "\n", subject);
     }
 
-    public void printStationsListOpening() {
+    public void printListOpening(String subject) {
         System.out.println();
-        System.out.println(HASHTAG + " " + STATIONS_LIST_OPENING);
+        System.out.printf(HASHTAG + " " + LIST_OPENING + "\n", subject);
     }
 
-    public void printLineChoiceOpening() {
+    public void printLastStationChoiceOpening(String subject) {
         System.out.println();
-        System.out.println(HASHTAG + " " + LINE_CHOICE_OPENING);
-    }
-
-    public void printInboundStationChoiceOpening() {
-        System.out.println();
-        System.out.println(HASHTAG + " " + INBOUND_CHOICE_OPENING);
-    }
-
-    public void printOutboundStationChoiceOpening() {
-        System.out.println();
-        System.out.println(HASHTAG + " " + OUTBOUND_CHOICE_OPENING);
-    }
-
-    public void printLineListOpening() {
-        System.out.println();
-        System.out.println(HASHTAG + " " + LINES_LIST_OPENING);
-    }
-
-    public void printLineToDeleteOpening() {
-        System.out.println();
-        System.out.println(HASHTAG + " " + LINE_TO_DELETE_OPENING);
+        System.out.printf(HASHTAG + " " + LAST_STATION_OPENING + "\n", subject);
     }
 }

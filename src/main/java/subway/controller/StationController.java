@@ -53,7 +53,7 @@ public class StationController implements Controller {
     }
 
     private void createStation() {
-        inputView.printStationChoiceOpening();
+        inputView.printCreationChoiceOpening(STATION);
         try {
             String stationName = getUserInput();
             StationRepository.addStation(new Station(stationName));
@@ -65,7 +65,7 @@ public class StationController implements Controller {
     }
 
     private void deleteStation() {
-        inputView.printStationToDeleteOpening();
+        inputView.printDeleteChoiceOpening(STATION);
         try {
             String stationName = getUserInput();
             StationRepository.deleteStationByName(stationName);
@@ -77,7 +77,7 @@ public class StationController implements Controller {
     }
 
     private void getStationsList() {
-        inputView.printStationsListOpening();
+        inputView.printListOpening(STATION);
         List<Station> stations = StationRepository.stations();
         outputView.printStationsList(stations);
     }

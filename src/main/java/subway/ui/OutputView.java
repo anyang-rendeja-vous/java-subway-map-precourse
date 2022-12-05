@@ -32,7 +32,6 @@ public class OutputView {
         for (Station station : stations) {
             printSingleStation(station);
         }
-        System.out.println();
     }
 
     private void printSingleStation(Station station){
@@ -43,7 +42,6 @@ public class OutputView {
         for (Line line : lines){
             printSingleLine(line);
         }
-        System.out.println();
     }
 
     private void printSingleLine(Line line){
