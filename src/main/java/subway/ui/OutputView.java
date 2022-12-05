@@ -33,8 +33,15 @@ public class OutputView {
         }
     }
 
-    private void printSingleDomain(Domain subject){
+    public void printSingleDomain(Domain subject){
         System.out.println(INFO + " " + subject.getName());
     }
 
+    public void printEmptyLine(){
+        System.out.println();
+    }
+
+    public void printSeparator() {
+        System.out.println(INFO + " ---");
+    }
 }

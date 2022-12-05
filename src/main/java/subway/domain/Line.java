@@ -4,7 +4,9 @@ import static subway.ui.ErrorMessages.INVALID_LINE_NAME_LENGTH;
 import static subway.ui.ErrorMessages.INVALID_LINE_NAME_STRUCT;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Line extends Domain{
     private static final String LINE_SUFFIX = "선";
@@ -30,5 +32,9 @@ public class Line extends Domain{
 
     public void addStation(Station station){
         stations.add(station);
+    }
+
+    public List<Domain> getStations() {
+        return Collections.unmodifiableList(stations);
     }
 }
