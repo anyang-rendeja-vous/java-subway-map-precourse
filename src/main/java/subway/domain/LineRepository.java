@@ -1,6 +1,8 @@
 package subway.domain;
 
 import static subway.domain.Line.validateName;
+import static subway.ui.ErrorMessages.DUPLICATED_LINE_NAME;
+import static subway.ui.ErrorMessages.DUPLICATED_STATION_NAME;
 import static subway.ui.ErrorMessages.NON_EXISTING_LINE;
 
 import java.util.ArrayList;
@@ -32,10 +34,18 @@ public class LineRepository {
                 .anyMatch(line -> Objects.equals(line.getName(), name));
     }
 
-    public static String validateLineName(String lineInput){
+    public static String validateLineToAdd(String lineInput){
         validateName(lineInput);
         if (isDuplicatedLine(lineInput)){
-            throw new IllegalArgumentException("error!");
+            throw new IllegalArgumentException(DUPLICATED_LINE_NAME.getMessage());
+        }
+        return lineInput;
+    }
+
+    public static String validateIfLineExists(String lineInput){
+        validateName(lineInput);
+        if (!isDuplicatedLine(lineInput)){
+            throw new IllegalArgumentException(NON_EXISTING_LINE.getMessage());
         }
         return lineInput;
     }

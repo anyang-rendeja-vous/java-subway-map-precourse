@@ -5,6 +5,7 @@ import static subway.ui.ErrorMessages.INVALID_MAIN_CHOICE;
 
 import java.util.HashMap;
 import java.util.Map;
+import subway.domain.LineRepository;
 import subway.ui.InputView;
 import subway.ui.OutputView;
 
@@ -48,7 +49,19 @@ public class SectionController implements Controller {
     }
 
     private void insertStationToLine() {
+        String line = getLineInput();
+        // TO ADD : 역, 순서 입력
+    }
 
+    private String getLineInput() {
+        inputView.printCreationChoiceOpening(SECTION);
+        try {
+            String line = getUserInput();
+            return LineRepository.validateIfLineExists(line);
+        } catch (IllegalArgumentException exception) {
+            outputView.printErrorMessage(exception.getMessage());
+            return getLineInput();
+        }
     }
 
     private void deleteStationFromLine() {

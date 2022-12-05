@@ -2,6 +2,7 @@ package subway.ui;
 
 public enum ErrorMessages {
     DUPLICATED_STATION_NAME("이미 등록된 역 이름입니다."),
+    DUPLICATED_LINE_NAME("이미 등록된 노선 이름입니다."),
 
     INVALID_LINE_NAME_LENGTH("노선 이름은 두글자 이상이여야 합니다."),
     INVALID_LINE_NAME_STRUCT("형식에 맞게 입력해주세요 (~선)"),

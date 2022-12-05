@@ -70,7 +70,7 @@ public class LineController implements Controller {
         inputView.printCreationChoiceOpening(LINE);
         try {
             String line = getUserInput();
-            return LineRepository.validateLineName(line);
+            return LineRepository.validateLineToAdd(line);
         } catch (IllegalArgumentException exception) {
             outputView.printErrorMessage(exception.getMessage());
             return getLineInput();
