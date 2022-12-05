@@ -37,7 +37,7 @@ public class StationController implements Controller {
 
     @Override
     public void execute() {
-        inputView.printStationsChoicesMenu();
+        inputView.printFeaturesMenu(STATION);
         runCommand();
     }
 

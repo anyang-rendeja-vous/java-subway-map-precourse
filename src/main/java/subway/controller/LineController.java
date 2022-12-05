@@ -40,7 +40,7 @@ public class LineController implements Controller {
 
     @Override
     public void execute() {
-        inputView.printLineChoicesMenu();
+        inputView.printFeaturesMenu(LINE);
         runCommand();
     }
 
