@@ -4,7 +4,10 @@ import static subway.ui.ErrorMessages.INVALID_STATION_NAME_LENGTH;
 import static subway.ui.ErrorMessages.INVALID_STATION_NAME_STRUCT;
 
 public class Station {
-    private String name;
+    private static final String STATION_SUFFIX = "역";
+    private static final int NAME_LENGTH = 2;
+
+    private final String name;
 
     public Station(String name) {
         validateName(name);
@@ -17,10 +20,10 @@ public class Station {
 
     // 추가 기능 구현
     private void validateName(String name){
-        if (name.length() < 2){
+        if (name.length() < NAME_LENGTH){
             throw new IllegalArgumentException(INVALID_STATION_NAME_LENGTH.getMessage());
         }
-        if (!name.endsWith("역")){
+        if (!name.endsWith(STATION_SUFFIX)){
             throw new IllegalArgumentException(INVALID_STATION_NAME_STRUCT.getMessage());
         }
     }
