@@ -5,7 +5,10 @@ import static subway.ui.ErrorMessages.INVALID_MAIN_CHOICE;
 
 import java.util.HashMap;
 import java.util.Map;
+import subway.domain.Line;
 import subway.domain.LineRepository;
+import subway.domain.Station;
+import subway.domain.StationRepository;
 import subway.ui.InputView;
 import subway.ui.OutputView;
 
@@ -49,18 +52,31 @@ public class SectionController implements Controller {
     }
 
     private void insertStationToLine() {
-        String line = getLineInput();
-        // TO ADD : 역, 순서 입력
+        Line line = getLineInput();
+        Station station = getStationInput(line);
     }
 
-    private String getLineInput() {
-        inputView.printCreationChoiceOpening(SECTION);
+    private Line getLineInput() {
+        inputView.printSectionsInputOpening("노선");
         try {
             String line = getUserInput();
-            return LineRepository.validateIfLineExists(line);
+            return LineRepository.getExistingLine(line);
         } catch (IllegalArgumentException exception) {
             outputView.printErrorMessage(exception.getMessage());
             return getLineInput();
+        }
+    }
+
+    private Station getStationInput(Line line){
+        inputView.printSectionsInputOpening("역");
+        try {
+            String station = getUserInput();
+            Station existingStation = StationRepository.validateStation(new Station(station));
+            LineRepository.validateIfStationExistsInLine(line, existingStation); // 해당 노선에 역이 존재하는 경우 exception 터트려야
+            return existingStation;
+        } catch (Exception exception) {
+            outputView.printErrorMessage(exception.getMessage());
+            return getStationInput(line);
         }
     }
 

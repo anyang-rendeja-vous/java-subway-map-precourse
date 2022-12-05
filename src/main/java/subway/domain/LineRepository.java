@@ -2,7 +2,7 @@ package subway.domain;
 
 import static subway.domain.Line.validateName;
 import static subway.ui.ErrorMessages.DUPLICATED_LINE_NAME;
-import static subway.ui.ErrorMessages.DUPLICATED_STATION_NAME;
+import static subway.ui.ErrorMessages.FORBIDDEN_STATION_TO_INSERT;
 import static subway.ui.ErrorMessages.NON_EXISTING_LINE;
 
 import java.util.ArrayList;
@@ -42,17 +42,22 @@ public class LineRepository {
         return lineInput;
     }
 
-    public static String validateIfLineExists(String lineInput){
-        validateName(lineInput);
-        if (!isDuplicatedLine(lineInput)){
-            throw new IllegalArgumentException(NON_EXISTING_LINE.getMessage());
-        }
-        return lineInput;
-    }
-
     private static boolean isDuplicatedLine(String lineInput) {
         return lines.stream()
                 .anyMatch(line -> lineInput.equals(line.getName()));
     }
 
+    public static Line getExistingLine(String lineInput) {
+        validateName(lineInput);
+        return lines.stream()
+                .filter(line -> lineInput.equals(line.getName()))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(NON_EXISTING_LINE.getMessage()));
+    }
+
+    public static void validateIfStationExistsInLine(Line line, Station existingStation) {
+        if(line.stationExists(existingStation)){
+            throw new IllegalStateException(FORBIDDEN_STATION_TO_INSERT.getMessage());
+        }
+    }
 }

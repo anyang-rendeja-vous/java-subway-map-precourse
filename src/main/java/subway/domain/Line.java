@@ -37,4 +37,10 @@ public class Line extends Domain{
     public List<Domain> getStations() {
         return Collections.unmodifiableList(stations);
     }
+
+    public boolean stationExists(Station station){
+        return stations
+                .stream()
+                .anyMatch(singleStation -> singleStation.nameMatches(station));
+    }
 }
