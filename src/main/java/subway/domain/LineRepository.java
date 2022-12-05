@@ -1,7 +1,6 @@
 package subway.domain;
 
-import static subway.ui.ErrorMessages.INVALID_LINE_NAME_LENGTH;
-import static subway.ui.ErrorMessages.INVALID_LINE_NAME_STRUCT;
+import static subway.domain.Line.validateName;
 import static subway.ui.ErrorMessages.NON_EXISTING_LINE;
 
 import java.util.ArrayList;
@@ -39,15 +38,6 @@ public class LineRepository {
             throw new IllegalArgumentException("error!");
         }
         return lineInput;
-    }
-
-    private static void validateName(String lineInput){
-        if (lineInput.length() < 2){
-            throw new IllegalArgumentException(INVALID_LINE_NAME_LENGTH.getMessage());
-        }
-        if (!lineInput.endsWith("호선")){
-            throw new IllegalArgumentException(INVALID_LINE_NAME_STRUCT.getMessage());
-        }
     }
 
     private static boolean isDuplicatedLine(String lineInput) {
