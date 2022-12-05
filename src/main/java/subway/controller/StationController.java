@@ -68,6 +68,7 @@ public class StationController implements Controller {
         try {
             String stationName = getUserInput();
             StationRepository.deleteStationByName(stationName);
+            outputView.printStationDeletionResult();
         } catch (IllegalStateException exception) {
             outputView.printErrorMessage(exception.getMessage());
             deleteStation();
