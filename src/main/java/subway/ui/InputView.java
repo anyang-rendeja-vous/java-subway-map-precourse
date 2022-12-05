@@ -57,6 +57,7 @@ public class InputView {
     }
 
     public void printStationToDeleteOpening() {
+        System.out.println();
         System.out.println(HASHTAG + " " + STATION_TO_DELETE_OPENING);
     }
 
@@ -94,6 +95,7 @@ public class InputView {
     }
 
     public void printLineToDeleteOpening() {
+        System.out.println();
         System.out.println(HASHTAG + " " + LINE_TO_DELETE_OPENING);
     }
 }

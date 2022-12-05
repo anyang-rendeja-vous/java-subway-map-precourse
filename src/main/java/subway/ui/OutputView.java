@@ -14,8 +14,8 @@ public class OutputView {
     private static final String LINE_DELETED = "지하철 노선이 삭제되었습니다.";
 
     public void printErrorMessage(String message){
-        System.out.println(ERROR + " " + message);
         System.out.println();
+        System.out.println(ERROR + " " + message);
     }
 
     public void printStationCreationResult(){
