@@ -9,7 +9,7 @@ import subway.domain.menu.LineManageMenu;
 import subway.domain.menu.MainMenu;
 import subway.domain.menu.SectionManageMenu;
 import subway.domain.menu.StationManageMenu;
-import subway.service.InitializeService;
+import subway.service.InitialService;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -22,16 +22,16 @@ public class SubwayController {
     private static final String CANNOT_DELETE_NON_EXISTENT_LINE = "존재하지 않는 노선은 삭제할 수 없습니다.";
     private final InputView inputView;
     private final OutputView outputView;
-    private final InitializeService initializeService;
+    private final InitialService initialService;
 
     public SubwayController(Scanner scanner) {
         this.inputView = new InputView(scanner);
         this.outputView = new OutputView();
-        this.initializeService = new InitializeService();
+        this.initialService = new InitialService();
     }
 
     public void run() {
-        initializeService.initializeData();
+        initialService.initializeData();
         String mainMenuChoice;
         int mainMenuNumber;
         while (true) {
@@ -122,7 +122,7 @@ public class SubwayController {
 
     private void processToAddStation() {
         try {
-            initializeService.createStation(inputView.inputStationNameToAdd());
+            initialService.createStation(inputView.inputStationNameToAdd());
             outputView.successAddStation();
         } catch(IllegalArgumentException ex) {
             outputView.printError(ex.getMessage());
@@ -153,7 +153,7 @@ public class SubwayController {
         String upBound = inputView.inputUpBoundTerminusStation();
         String downBound = inputView.inputDownBoundTerminusStation();
         try {
-            initializeService.createLine(lineName, upBound, downBound);
+            initialService.createLine(lineName, upBound, downBound);
             outputView.successAddLine();
         } catch(IllegalArgumentException ex) {
             outputView.printError(ex.getMessage());

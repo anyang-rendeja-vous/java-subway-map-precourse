@@ -5,7 +5,7 @@ import subway.domain.LineRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 
-public class InitializeService {
+public class InitialService {
 
     private static final String STATION_GYODAE = "교대역";
     private static final String STATION_GANGNAM = "강남역";
