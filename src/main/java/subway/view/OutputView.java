@@ -11,18 +11,17 @@ import subway.domain.menu.StationManageMenu;
 
 public class OutputView {
 
-    private static final String PREFIX = "[INFO] ";
+    private static final String INFO_PREFIX = "[INFO] ";
+    private static final String ERROR_PREFIX = "[ERROR] ";
+    private static final String SUBWAY_MAP = "## 지하철 노선도";
+    private static final String SEPARATOR = "---";
+
     private static final String SUCCESSFUL_STATION_REGISTRATION = "지하철 역이 등록되었습니다.";
     private static final String SUCCESSFUL_STATION_DELETE = "지하철 역이 삭제되었습니다.";
     private static final String SUCCESSFUL_LINE_REGISTRATION = "지하철 노선이 등록되었습니다.";
     private static final String SUCCESSFUL_LINE_DELETE = "지하철 노선이 삭제되었습니다.";
     private static final String SUCCESSFUL_SECTION_REGISTRATION = "구간이 등록되었습니다.";
     private static final String SUCCESSFUL_SECTION_DELETE = "구간이 삭제되었습니다.";
-
-    private static final String SUBWAY_MAP = "## 지하철 노선도";
-    private static final String SEPARATOR = "---";
-
-    private static final String ERROR_PREFIX = "[ERROR] ";
 
     public void printError(String message) {
         System.out.println();
@@ -59,51 +58,51 @@ public class OutputView {
 
     public void successAddStation() {
         System.out.println();
-        System.out.println(PREFIX + SUCCESSFUL_STATION_REGISTRATION);
+        System.out.println(INFO_PREFIX + SUCCESSFUL_STATION_REGISTRATION);
         System.out.println();
     }
 
     public void successDeleteStation() {
         System.out.println();
-        System.out.println(PREFIX + SUCCESSFUL_STATION_DELETE);
+        System.out.println(INFO_PREFIX + SUCCESSFUL_STATION_DELETE);
         System.out.println();
     }
 
     public void printAllStations(List<Station> stations) {
         stations.stream()
-                .map(station -> PREFIX + station.getName())
+                .map(station -> INFO_PREFIX + station.getName())
                 .forEach(System.out::println);
         System.out.println();
     }
 
     public void successAddLine() {
         System.out.println();
-        System.out.println(PREFIX + SUCCESSFUL_LINE_REGISTRATION);
+        System.out.println(INFO_PREFIX + SUCCESSFUL_LINE_REGISTRATION);
         System.out.println();
     }
 
     public void printAllLines(List<Line> lines) {
         lines.stream()
-                .map(line -> PREFIX + line.getName())
+                .map(line -> INFO_PREFIX + line.getName())
                 .forEach(System.out::println);
         System.out.println();
     }
 
     public void successDeleteLine() {
         System.out.println();
-        System.out.println(PREFIX + SUCCESSFUL_LINE_DELETE);
+        System.out.println(INFO_PREFIX + SUCCESSFUL_LINE_DELETE);
         System.out.println();
     }
 
     public void successAddSection() {
         System.out.println();
-        System.out.println(PREFIX + SUCCESSFUL_SECTION_REGISTRATION);
+        System.out.println(INFO_PREFIX + SUCCESSFUL_SECTION_REGISTRATION);
         System.out.println();
     }
 
     public void successDeleteSection() {
         System.out.println();
-        System.out.println(PREFIX + SUCCESSFUL_SECTION_DELETE);
+        System.out.println(INFO_PREFIX + SUCCESSFUL_SECTION_DELETE);
         System.out.println();
     }
 
@@ -111,8 +110,8 @@ public class OutputView {
         System.out.println();
         System.out.println(SUBWAY_MAP);
         LineRepository.lines().forEach(line -> {
-            System.out.println(PREFIX + line.getName());
-            System.out.println(PREFIX + SEPARATOR);
+            System.out.println(INFO_PREFIX + line.getName());
+            System.out.println(INFO_PREFIX + SEPARATOR);
             printStations(line);
             System.out.println();
         });
@@ -121,7 +120,7 @@ public class OutputView {
     private void printStations(Line line) {
         line.getStations()
                 .stream()
-                .map(station -> PREFIX + station.getName())
+                .map(station -> INFO_PREFIX + station.getName())
                 .forEach(System.out::println);
     }
 }
