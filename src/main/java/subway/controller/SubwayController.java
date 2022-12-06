@@ -134,8 +134,12 @@ public class SubwayController {
         String lineName = inputView.inputLineNameToAdd();
         String upbound = inputView.inputUpboundTerminusStation();
         String downbound = inputView.inputDownboundTerminusStation();
-        initializeService.createLine(lineName, upbound, downbound);
-        outputView.successAddLine();
+        try {
+            initializeService.createLine(lineName, upbound, downbound);
+            outputView.successAddLine();
+        } catch(IllegalArgumentException ex) {
+            outputView.printError(ex.getMessage());
+        }
     }
 
     private void processToDeleteLine() {
