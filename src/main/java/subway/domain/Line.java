@@ -1,5 +1,6 @@
 package subway.domain;
 
+import static subway.ui.ErrorMessages.FORBIDDEN_STATION_TO_DELETE;
 import static subway.ui.ErrorMessages.INVALID_LINE_NAME_LENGTH;
 import static subway.ui.ErrorMessages.INVALID_LINE_NAME_STRUCT;
 
@@ -42,6 +43,14 @@ public class Line extends Domain{
         return stations
                 .stream()
                 .anyMatch(singleStation -> singleStation.nameMatches(station));
+    }
+
+    public Station getExistingStation(Station station){
+        return stations
+                .stream()
+                .filter(singleStation -> singleStation.nameMatches(station))
+                .findAny()
+                .orElseThrow(() -> new IllegalStateException(FORBIDDEN_STATION_TO_DELETE.getMessage()));
     }
 
     public boolean isInRange(Integer order){

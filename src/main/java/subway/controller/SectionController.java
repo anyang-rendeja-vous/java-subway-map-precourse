@@ -113,9 +113,7 @@ public class SectionController implements Controller {
         inputView.printSectionsInputOpening(STATION);
         try {
             String station = getUserInput();
-            Station existingStation = StationRepository.getStationByName(station);
-            LineRepository.validateIfStationInLine(line, existingStation); // 해당 노선에 역이 존재해야
-            return existingStation;
+            return LineRepository.validateStationInLine(line, new Station(station));
         } catch (Exception exception) {
             outputView.printErrorMessage(exception.getMessage());
             return getStationInput(line);

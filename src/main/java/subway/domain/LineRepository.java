@@ -68,10 +68,8 @@ public class LineRepository {
         }
     }
 
-    public static void validateIfStationInLine(Line line, Station existingStation) {
-        if (!line.stationExists(existingStation)){
-            throw new IllegalStateException(FORBIDDEN_STATION_TO_DELETE.getMessage());
-        }
+    public static Station validateStationInLine(Line line, Station station) {
+        return line.getExistingStation(station);
     }
 
     public static void validateOrderInRange(Line line, Integer order) {
