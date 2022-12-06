@@ -17,6 +17,9 @@ public class SubwayController {
 
     private static final String QUIT = "Q";
     private static final String BACK = "B";
+    private static final String CANNOT_DELETE_ADDED_STATION = "노선에 등록되어 있는 역은 삭제할 수 없습니다.";
+    private static final String CANNOT_DELETE_NON_EXISTENT_STATION = "존재하지 않는 역은 삭제할 수 없습니다.";
+    private static final String CANNOT_DELETE_NON_EXISTENT_LINE = "존재하지 않는 노선은 삭제할 수 없습니다.";
     private final InputView inputView;
     private final OutputView outputView;
     private final InitializeService initializeService;
@@ -130,10 +133,10 @@ public class SubwayController {
         String deleteStation = inputView.inputStationNameToDelete();
         try {
             if (LineRepository.isContain(deleteStation)) {
-                throw new IllegalArgumentException("노선에 등록되어 있는 역은 삭제할 수 없습니다.");
+                throw new IllegalArgumentException(CANNOT_DELETE_ADDED_STATION);
             }
             if (!StationRepository.deleteStation(deleteStation)) {
-                throw new IllegalArgumentException("존재하지 않는 역입니다.");
+                throw new IllegalArgumentException(CANNOT_DELETE_NON_EXISTENT_STATION);
             }
             outputView.successDeleteStation();
         } catch(IllegalArgumentException ex) {
@@ -160,7 +163,7 @@ public class SubwayController {
     private void processToDeleteLine() {
         try {
             if (!LineRepository.deleteLineByName(inputView.inputLineNameToDelete())) {
-                throw new IllegalArgumentException("존재하지 않는 노선입니다.");
+                throw new IllegalArgumentException(CANNOT_DELETE_NON_EXISTENT_LINE);
             }
             outputView.successDeleteLine();
         } catch(IllegalArgumentException ex) {
