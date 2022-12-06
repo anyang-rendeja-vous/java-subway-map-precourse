@@ -124,7 +124,7 @@ public class SubwayController {
         try {
             initialService.createStation(inputView.inputStationNameToAdd());
             outputView.successAddStation();
-        } catch(IllegalArgumentException ex) {
+        } catch (IllegalArgumentException ex) {
             outputView.printError(ex.getMessage());
         }
     }
@@ -139,7 +139,7 @@ public class SubwayController {
                 throw new IllegalArgumentException(CANNOT_DELETE_NON_EXISTENT_STATION);
             }
             outputView.successDeleteStation();
-        } catch(IllegalArgumentException ex) {
+        } catch (IllegalArgumentException ex) {
             outputView.printError(ex.getMessage());
         }
     }
@@ -155,7 +155,7 @@ public class SubwayController {
         try {
             initialService.createLine(lineName, upBound, downBound);
             outputView.successAddLine();
-        } catch(IllegalArgumentException ex) {
+        } catch (IllegalArgumentException ex) {
             outputView.printError(ex.getMessage());
         }
     }
@@ -166,7 +166,7 @@ public class SubwayController {
                 throw new IllegalArgumentException(CANNOT_DELETE_NON_EXISTENT_LINE);
             }
             outputView.successDeleteLine();
-        } catch(IllegalArgumentException ex) {
+        } catch (IllegalArgumentException ex) {
             outputView.printError(ex.getMessage());
         }
     }
@@ -184,7 +184,7 @@ public class SubwayController {
             line.addSectionAsSpecified(StationRepository.findStation(stationName),
                     Integer.parseInt(order) - 1); // 1번부터 시작하니까 실제로는 -1 해야함
             outputView.successAddSection();
-        } catch(IllegalArgumentException ex) {
+        } catch (IllegalArgumentException ex) {
             outputView.printError(ex.getMessage());
         }
     }
@@ -196,7 +196,7 @@ public class SubwayController {
         try {
             line.deleteSection(StationRepository.findStation(stationName));
             outputView.successDeleteSection();
-        } catch(IllegalStateException ex) {
+        } catch (IllegalStateException ex) {
             outputView.printError(ex.getMessage());
         }
     }

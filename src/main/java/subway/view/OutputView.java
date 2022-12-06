@@ -39,7 +39,7 @@ public class OutputView {
     public void printStationManagementMenu() {
         System.out.println();
         StationManageMenu.getAll()
-                        .forEach(System.out::println);
+                .forEach(System.out::println);
         System.out.println();
     }
 
