@@ -103,8 +103,12 @@ public class SubwayController {
     }
 
     private void processToAddStation() {
-        initializeService.createStation(inputView.inputStationNameToAdd());
-        outputView.successAddStation();
+        try {
+            initializeService.createStation(inputView.inputStationNameToAdd());
+            outputView.successAddStation();
+        } catch(IllegalArgumentException ex) {
+            outputView.printError(ex.getMessage());
+        }
     }
 
     private void processToDeleteStation() {
