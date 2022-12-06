@@ -29,13 +29,16 @@ public class LineRepository {
                 .orElseThrow(() -> new IllegalArgumentException(NOT_EXISTED_LINE));
     }
 
-    public static boolean isNotContain(String findStation) {
-        return lines().stream()
-                .map(line -> line.getStations()
-                        .stream()
-                        .anyMatch(station -> station.getName().equals(findStation))
-                )
-                .findAny()
-                .isEmpty();
+    public static boolean isContain(String findStation) {
+        boolean isContain = false;
+        for (Line line : lines) {
+            isContain = line.getStations()
+                    .stream()
+                    .anyMatch(station -> station.getName().equals(findStation));
+            if (isContain) {
+                break;
+            }
+        }
+        return isContain;
     }
 }
