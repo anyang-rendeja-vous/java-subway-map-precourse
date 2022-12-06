@@ -90,7 +90,7 @@ public class SectionController implements Controller {
         inputView.printSectionsInputOpening(ORDER);
         try {
             Integer order = Integer.parseInt(getUserInput());
-            LineRepository.validateOrderInRange(line, order); // 해당 노선의 범위 내에 있는 입력인지
+            LineRepository.validateOrderInRange(line, order);
             return order;
         } catch (Exception exception) {
             outputView.printErrorMessage(exception.getMessage());
@@ -101,7 +101,7 @@ public class SectionController implements Controller {
     private void deleteStationFromLine() {
         Line line = getLineInput();
         Station station = getStationInLineInput(line);
-        delete(line, station); // TO FIX : 삭제 안됨 !
+        delete(line, station);
     }
 
     private void delete(Line line, Station station) {

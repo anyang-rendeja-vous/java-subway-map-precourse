@@ -23,7 +23,7 @@ public class StationRepository {
     }
 
     public static Station validateStation(Station station){
-        if (!isDuplicatedName(station)){ // 존재하지 않으면 에러 !
+        if (!isDuplicatedName(station)){
             throw new IllegalStateException(NON_EXISTING_STATION.getMessage());
         }
         return station;

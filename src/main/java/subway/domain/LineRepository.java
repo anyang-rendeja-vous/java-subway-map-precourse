@@ -2,7 +2,6 @@ package subway.domain;
 
 import static subway.domain.Line.validateName;
 import static subway.ui.ErrorMessages.DUPLICATED_LINE_NAME;
-import static subway.ui.ErrorMessages.FORBIDDEN_STATION_TO_DELETE;
 import static subway.ui.ErrorMessages.FORBIDDEN_STATION_TO_INSERT;
 import static subway.ui.ErrorMessages.INVALID_ORDER_INPUT;
 import static subway.ui.ErrorMessages.NON_EXISTING_LINE;
