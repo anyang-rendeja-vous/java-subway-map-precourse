@@ -29,7 +29,6 @@ public class SubwayController {
 
     public void run() {
         initializeService.initializeData();
-
         String mainMenuChoice;
         int mainMenuNumber;
         while (true) {
@@ -39,72 +38,82 @@ public class SubwayController {
                 break;
             }
             mainMenuNumber = Integer.parseInt(mainMenuChoice);
-            String subMenuChoice;
-            int subMenuNumber;
-            // 역 관리
-            if (MainMenu.MANAGE_STATION.isSamePrefix(mainMenuNumber)) {
-                outputView.printStationManagementMenu();
-                subMenuChoice = repeat(inputView::inputStationManagement);
-                if (subMenuChoice.equals(BACK)) {
-                    continue;
-                }
-                subMenuNumber = Integer.parseInt(subMenuChoice);
-                // 역 등록
-                if (StationManageMenu.ADD_STATION.isSamePrefix(subMenuNumber)) {
-                    processToAddStation();
-                }
-                // 역 삭제
-                if (StationManageMenu.DELETE_STATION.isSamePrefix(subMenuNumber)) {
-                    processToDeleteStation();
-                }
-                // 역 조회
-                if (StationManageMenu.SELECT_STATION.isSamePrefix(subMenuNumber)) {
-                    processToPrintStation();
-                }
+            if (manageStation(mainMenuNumber)) {
+                continue;
             }
-            // 노선 관리
-            if (MainMenu.MANAGE_LINE.isSamePrefix(mainMenuNumber)) {
-                outputView.printLineManagementMenu();
-                subMenuChoice = repeat(inputView::inputStationManagement);
-                if (subMenuChoice.equals(BACK)) {
-                    continue;
-                }
-                subMenuNumber = Integer.parseInt(subMenuChoice);
-                // 노선 등록
-                if (LineManageMenu.ADD_LINE.isSamePrefix(subMenuNumber)) {
-                    processToAddLine();
-                }
-                // 노선 삭제
-                if (LineManageMenu.DELETE_LINE.isSamePrefix(subMenuNumber)) {
-                    processToDeleteLine();
-                }
-                // 노선 조회
-                if (LineManageMenu.SELECT_LINE.isSamePrefix(subMenuNumber)) {
-                    processToPrintLine();
-                }
+            if (manageLine(mainMenuNumber)) {
+                continue;
             }
-            // 구간 관리
-            if (MainMenu.MANAGE_SECTION.isSamePrefix(mainMenuNumber)) {
-                outputView.printSectionManagementMenu();
-                subMenuChoice = repeat(inputView::inputSectionManagement);
-                if (subMenuChoice.equals(BACK)) {
-                    continue;
-                }
-                subMenuNumber = Integer.parseInt(subMenuChoice);
-                // 구간 등록
-                if (SectionManageMenu.ADD_SECTION.isSamePrefix(subMenuNumber)) {
-                    processToAddSection();
-                }
-                // 구간 삭제
-                if (SectionManageMenu.DELETE_SECTION.isSamePrefix(subMenuNumber)) {
-                    processToDeleteSection();
-                }
+            if (manageSection(mainMenuNumber)) {
+                continue;
             }
-            // 지하철 노선도 출력
-            if (MainMenu.PRINT_SUBWAY_MAP.isSamePrefix(mainMenuNumber)) {
-                outputView.printSubwayMap();
-            }
+            printSubwayMap(mainMenuNumber);
+        }
+    }
 
+    private boolean manageStation(int mainMenuNumber) {
+        if (MainMenu.MANAGE_STATION.isSamePrefix(mainMenuNumber)) {
+            outputView.printStationManagementMenu();
+            String menuChoice = repeat(inputView::inputStationManagement);
+            if (menuChoice.equals(BACK)) {
+                return true;
+            }
+            int menuNumber = Integer.parseInt(menuChoice);
+            if (StationManageMenu.ADD_STATION.isSamePrefix(menuNumber)) {
+                processToAddStation();
+            }
+            if (StationManageMenu.DELETE_STATION.isSamePrefix(menuNumber)) {
+                processToDeleteStation();
+            }
+            if (StationManageMenu.SELECT_STATION.isSamePrefix(menuNumber)) {
+                processToPrintStation();
+            }
+        }
+        return false;
+    }
+
+    private boolean manageLine(int mainMenuNumber) {
+        if (MainMenu.MANAGE_LINE.isSamePrefix(mainMenuNumber)) {
+            outputView.printLineManagementMenu();
+            String menuChoice = repeat(inputView::inputStationManagement);
+            if (menuChoice.equals(BACK)) {
+                return true;
+            }
+            int menuNumber = Integer.parseInt(menuChoice);
+            if (LineManageMenu.ADD_LINE.isSamePrefix(menuNumber)) {
+                processToAddLine();
+            }
+            if (LineManageMenu.DELETE_LINE.isSamePrefix(menuNumber)) {
+                processToDeleteLine();
+            }
+            if (LineManageMenu.SELECT_LINE.isSamePrefix(menuNumber)) {
+                processToPrintLine();
+            }
+        }
+        return false;
+    }
+
+    private boolean manageSection(int mainMenuNumber) {
+        if (MainMenu.MANAGE_SECTION.isSamePrefix(mainMenuNumber)) {
+            outputView.printSectionManagementMenu();
+            String menuChoice = repeat(inputView::inputSectionManagement);
+            if (menuChoice.equals(BACK)) {
+                return true;
+            }
+            int menuNumber = Integer.parseInt(menuChoice);
+            if (SectionManageMenu.ADD_SECTION.isSamePrefix(menuNumber)) {
+                processToAddSection();
+            }
+            if (SectionManageMenu.DELETE_SECTION.isSamePrefix(menuNumber)) {
+                processToDeleteSection();
+            }
+        }
+        return false;
+    }
+
+    private void printSubwayMap(int mainMenuNumber) {
+        if (MainMenu.PRINT_SUBWAY_MAP.isSamePrefix(mainMenuNumber)) {
+            outputView.printSubwayMap();
         }
     }
 
@@ -188,7 +197,6 @@ public class SubwayController {
             outputView.printError(ex.getMessage());
         }
     }
-
 
     private <T> T repeat(Supplier<T> inputReader) {
         try {
