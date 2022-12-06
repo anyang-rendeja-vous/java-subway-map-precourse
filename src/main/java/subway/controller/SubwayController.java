@@ -11,6 +11,8 @@ import subway.view.OutputView;
 
 public class SubwayController {
 
+    private static final String QUIT = "Q";
+    private static final String BACK = "B";
     private final InputView inputView;
     private final OutputView outputView;
     private final InitializeService initializeService;
@@ -29,7 +31,7 @@ public class SubwayController {
         while (true) {
             outputView.printInitialMenu();
             firstChoiceStr = repeat(inputView::inputNumber);
-            if (firstChoiceStr.equals("Q")) {
+            if (firstChoiceStr.equals(QUIT)) {
                 break;
             }
             firstChoice = Integer.parseInt(firstChoiceStr);
@@ -39,7 +41,7 @@ public class SubwayController {
             if (firstChoice == 1) {
                 outputView.printStationManagementMenu();
                 secondChoiceStr = repeat(inputView::inputStationManagement);
-                if (secondChoiceStr.equals("B")) {
+                if (secondChoiceStr.equals(BACK)) {
                     continue;
                 }
                 secondChoice = Integer.parseInt(secondChoiceStr);
@@ -60,7 +62,7 @@ public class SubwayController {
             if (firstChoice == 2) {
                 outputView.printLineManagementMenu();
                 secondChoiceStr = repeat(inputView::inputStationManagement);
-                if (secondChoiceStr.equals("B")) {
+                if (secondChoiceStr.equals(BACK)) {
                     continue;
                 }
                 secondChoice = Integer.parseInt(secondChoiceStr);
@@ -81,7 +83,7 @@ public class SubwayController {
             if (firstChoice == 3) {
                 outputView.printSectionManagementMenu();
                 secondChoiceStr = repeat(inputView::inputSectionManagement);
-                if (secondChoiceStr.equals("B")) {
+                if (secondChoiceStr.equals(BACK)) {
                     continue;
                 }
                 secondChoice = Integer.parseInt(secondChoiceStr);
