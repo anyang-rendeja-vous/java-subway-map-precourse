@@ -33,7 +33,7 @@ public class InputView {
         return scanner.next();
     }
 
-    public String inputNumber() {
+    public String inputMainNumber() {
         System.out.println(ENTER_NUMBER);
         String choice = input();
         inputValidator.isMenuValid(choice);
@@ -44,6 +44,7 @@ public class InputView {
         System.out.println(ENTER_NUMBER);
         String choice = input();
         inputValidator.isStationMenuValid(choice);
+        System.out.println();
         return choice;
     }
 
@@ -51,23 +52,21 @@ public class InputView {
         System.out.println(ENTER_NUMBER);
         String choice = input();
         inputValidator.isSectionMenuValid(choice);
+        System.out.println();
         return choice;
     }
 
     public String inputStationNameToAdd() {
-        System.out.println();
         System.out.println(ENTER_STATION_NAME_TO_ADD);
         return input();
     }
 
     public String inputStationNameToDelete() {
-        System.out.println();
         System.out.println(ENTER_STATION_NAME_TO_DELETE);
         return input();
     }
 
     public String inputLineNameToAdd() {
-        System.out.println();
         System.out.println(ENTER_LINE_NAME_TO_ADD);
         return input();
     }
@@ -85,13 +84,11 @@ public class InputView {
     }
 
     public String inputLineNameToDelete() {
-        System.out.println();
         System.out.println(ENTER_LINE_NAME_TO_DELETE);
         return input();
     }
 
     public String inputLineName() {
-        System.out.println();
         System.out.println(ENTER_LINE_NAME);
         return input();
     }
@@ -109,7 +106,6 @@ public class InputView {
     }
 
     public String inputLineNameToDeleteInSection() {
-        System.out.println();
         System.out.println(ENTER_LINE_NAME_TO_DELETE_IN_SECTION);
         return input();
     }

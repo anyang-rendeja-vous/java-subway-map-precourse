@@ -13,6 +13,9 @@ public class OutputView {
 
     private static final String INFO_PREFIX = "[INFO] ";
     private static final String ERROR_PREFIX = "[ERROR] ";
+
+    private static final String STATION_LIST = "## 역 목록";
+    private static final String LINE_LIST = "## 노선 목록";
     private static final String SUBWAY_MAP = "## 지하철 노선도";
     private static final String SEPARATOR = "---";
 
@@ -69,6 +72,7 @@ public class OutputView {
     }
 
     public void printAllStations(List<Station> stations) {
+        System.out.println(STATION_LIST);
         stations.stream()
                 .map(station -> INFO_PREFIX + station.getName())
                 .forEach(System.out::println);
@@ -82,6 +86,7 @@ public class OutputView {
     }
 
     public void printAllLines(List<Line> lines) {
+        System.out.println(LINE_LIST);
         lines.stream()
                 .map(line -> INFO_PREFIX + line.getName())
                 .forEach(System.out::println);

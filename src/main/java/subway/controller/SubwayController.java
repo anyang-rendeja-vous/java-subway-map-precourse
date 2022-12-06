@@ -35,7 +35,7 @@ public class SubwayController {
         String menuChoice;
         while (true) {
             outputView.printInitialMenu();
-            menuChoice = repeat(inputView::inputNumber);
+            menuChoice = repeat(inputView::inputMainNumber);
             if (menuChoice.equals(QUIT)) {
                 break;
             }
