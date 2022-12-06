@@ -198,7 +198,7 @@ public class SubwayController {
         try {
             line.deleteSection(StationRepository.findStation(stationName));
             outputView.successDeleteSection();
-        } catch (IllegalStateException ex) {
+        } catch (IllegalArgumentException | IllegalStateException ex) {
             outputView.printError(ex.getMessage());
         }
     }
