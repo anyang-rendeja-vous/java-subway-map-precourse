@@ -132,10 +132,10 @@ public class SubwayController {
 
     private void processToAddLine() {
         String lineName = inputView.inputLineNameToAdd();
-        String upbound = inputView.inputUpboundTerminusStation();
-        String downbound = inputView.inputDownboundTerminusStation();
+        String upBound = inputView.inputUpBoundTerminusStation();
+        String downBound = inputView.inputDownBoundTerminusStation();
         try {
-            initializeService.createLine(lineName, upbound, downbound);
+            initializeService.createLine(lineName, upBound, downBound);
             outputView.successAddLine();
         } catch(IllegalArgumentException ex) {
             outputView.printError(ex.getMessage());

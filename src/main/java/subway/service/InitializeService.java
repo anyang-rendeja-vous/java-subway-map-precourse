@@ -33,9 +33,9 @@ public class InitializeService {
         createLine("신분당선", "강남역", "양재시민의숲역");
     }
 
-    public void createLine(String lineName, String upbound, String downbound) {
+    public void createLine(String lineName, String upBound, String downBound) {
         LineRepository.addLine(
-                new Line(lineName, StationRepository.findStation(upbound), StationRepository.findStation(downbound)));
+                new Line(lineName, StationRepository.findStation(upBound), StationRepository.findStation(downBound)));
     }
 
     private void setSections() {

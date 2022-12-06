@@ -10,11 +10,11 @@ public class Line {
     private String name;
     private LinkedList<Station> stations = new LinkedList<>();
 
-    public Line(String name, Station upbound, Station downbound) {
+    public Line(String name, Station upBound, Station downBound) {
         validate(name);
         this.name = name;
-        stations.addFirst(upbound);
-        stations.addLast(downbound);
+        stations.addFirst(upBound);
+        stations.addLast(downBound);
     }
 
     public String getName() {

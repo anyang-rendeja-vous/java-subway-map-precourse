@@ -73,14 +73,14 @@ public class InputView {
         return input();
     }
 
-    public String inputUpboundTerminusStation() {
+    public String inputUpBoundTerminusStation() {
         System.out.println();
         System.out.println(ENTER_UPBOUND_TERMINUS_STATION);
         String name = input();
         return name;
     }
 
-    public String inputDownboundTerminusStation() {
+    public String inputDownBoundTerminusStation() {
         System.out.println();
         System.out.println(ENTER_DOWNBOUND_TERMINUS_STATION);
         String name = input();
