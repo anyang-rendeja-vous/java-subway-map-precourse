@@ -116,7 +116,7 @@ public class SubwayController {
 
     private void printSubwayMap(int mainMenuNumber) {
         if (MainMenu.PRINT_SUBWAY_MAP.isSamePrefix(mainMenuNumber)) {
-            outputView.printSubwayMap();
+            outputView.printMap();
         }
     }
 

@@ -107,17 +107,21 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printSubwayMap() {
+    public void printMap() {
         System.out.println();
         System.out.println(SUBWAY_MAP);
         LineRepository.lines().forEach(line -> {
             System.out.println(PREFIX + line.getName());
             System.out.println(PREFIX + SEPARATOR);
-            line.getStations()
-                    .stream()
-                    .map(station -> PREFIX + station.getName())
-                    .forEach(System.out::println);
+            printStations(line);
             System.out.println();
         });
+    }
+
+    private void printStations(Line line) {
+        line.getStations()
+                .stream()
+                .map(station -> PREFIX + station.getName())
+                .forEach(System.out::println);
     }
 }
