@@ -7,6 +7,18 @@ import subway.domain.StationRepository;
 
 public class InitializeService {
 
+    private static final String STATION_GYODAE = "교대역";
+    private static final String STATION_GANGNAM = "강남역";
+    private static final String STATION_YEOKSAM = "역삼역";
+    private static final String STATION_SOUTH_TERMINAL = "남부터미널역";
+    private static final String STATION_YANGJAE = "양재역";
+    private static final String STATION_YANGJAE_CITIZENS_FOREST = "양재시민의숲역";
+    private static final String STATION_MAEBONG = "매봉역";
+
+    private static final String LINE_TWO = "2호선";
+    private static final String LINE_THREE = "3호선";
+    private static final String LINE_SHINBUNDANG = "신분당선";
+
     public void initializeData() {
         setStations();
         setLines();
@@ -14,13 +26,13 @@ public class InitializeService {
     }
 
     private void setStations() {
-        createStation("교대역");
-        createStation("강남역");
-        createStation("역삼역");
-        createStation("남부터미널역");
-        createStation("양재역");
-        createStation("양재시민의숲역");
-        createStation("매봉역");
+        createStation(STATION_GYODAE);
+        createStation(STATION_GANGNAM);
+        createStation(STATION_YEOKSAM);
+        createStation(STATION_SOUTH_TERMINAL);
+        createStation(STATION_YANGJAE);
+        createStation(STATION_YANGJAE_CITIZENS_FOREST);
+        createStation(STATION_MAEBONG);
     }
 
     public void createStation(String stationName) {
@@ -28,9 +40,9 @@ public class InitializeService {
     }
 
     private void setLines() {
-        createLine("2호선", "교대역", "역삼역");
-        createLine("3호선", "교대역", "매봉역");
-        createLine("신분당선", "강남역", "양재시민의숲역");
+        createLine(LINE_TWO, STATION_GYODAE, STATION_YEOKSAM);
+        createLine(LINE_THREE, STATION_GYODAE, STATION_MAEBONG);
+        createLine(LINE_SHINBUNDANG, STATION_GANGNAM, STATION_YANGJAE_CITIZENS_FOREST);
     }
 
     public void createLine(String lineName, String upBound, String downBound) {
@@ -39,10 +51,10 @@ public class InitializeService {
     }
 
     private void setSections() {
-        addSections("2호선", "강남역");
-        addSections("3호선", "남부터미널역");
-        addSections("3호선", "양재역");
-        addSections("신분당선", "양재역");
+        addSections(LINE_TWO, STATION_GANGNAM);
+        addSections(LINE_THREE, STATION_SOUTH_TERMINAL);
+        addSections(LINE_THREE, STATION_YANGJAE);
+        addSections(LINE_SHINBUNDANG, STATION_YANGJAE);
     }
 
     private void addSections(String lineName, String StationName) {
