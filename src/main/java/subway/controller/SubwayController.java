@@ -5,6 +5,10 @@ import java.util.function.Supplier;
 import subway.domain.Line;
 import subway.domain.LineRepository;
 import subway.domain.StationRepository;
+import subway.domain.menu.LineManageMenu;
+import subway.domain.menu.MainMenu;
+import subway.domain.menu.SectionManageMenu;
+import subway.domain.menu.StationManageMenu;
 import subway.service.InitializeService;
 import subway.view.InputView;
 import subway.view.OutputView;
@@ -38,7 +42,7 @@ public class SubwayController {
             String secondChoiceStr;
             int secondChoice;
             // 역 관리
-            if (firstChoice == 1) {
+            if (MainMenu.MANAGE_STATION.isSamePrefix(firstChoice)) {
                 outputView.printStationManagementMenu();
                 secondChoiceStr = repeat(inputView::inputStationManagement);
                 if (secondChoiceStr.equals(BACK)) {
@@ -46,20 +50,20 @@ public class SubwayController {
                 }
                 secondChoice = Integer.parseInt(secondChoiceStr);
                 // 역 등록
-                if (secondChoice == 1) {
+                if (StationManageMenu.ADD_STATION.isSamePrefix(secondChoice)) {
                     processToAddStation();
                 }
                 // 역 삭제
-                if (secondChoice == 2) {
+                if (StationManageMenu.DELETE_STATION.isSamePrefix(secondChoice)) {
                     processToDeleteStation();
                 }
                 // 역 조회
-                if (secondChoice == 3) {
+                if (StationManageMenu.SELECT_STATION.isSamePrefix(secondChoice)) {
                     processToPrintStation();
                 }
             }
             // 노선 관리
-            if (firstChoice == 2) {
+            if (MainMenu.MANAGE_LINE.isSamePrefix(firstChoice)) {
                 outputView.printLineManagementMenu();
                 secondChoiceStr = repeat(inputView::inputStationManagement);
                 if (secondChoiceStr.equals(BACK)) {
@@ -67,20 +71,20 @@ public class SubwayController {
                 }
                 secondChoice = Integer.parseInt(secondChoiceStr);
                 // 노선 등록
-                if (secondChoice == 1) {
+                if (LineManageMenu.ADD_LINE.isSamePrefix(secondChoice)) {
                     processToAddLine();
                 }
                 // 노선 삭제
-                if (secondChoice == 2) {
+                if (LineManageMenu.DELETE_LINE.isSamePrefix(secondChoice)) {
                     processToDeleteLine();
                 }
                 // 노선 조회
-                if (secondChoice == 3) {
+                if (LineManageMenu.SELECT_LINE.isSamePrefix(secondChoice)) {
                     processToPrintLine();
                 }
             }
             // 구간 관리
-            if (firstChoice == 3) {
+            if (MainMenu.MANAGE_SECTION.isSamePrefix(firstChoice)) {
                 outputView.printSectionManagementMenu();
                 secondChoiceStr = repeat(inputView::inputSectionManagement);
                 if (secondChoiceStr.equals(BACK)) {
@@ -88,16 +92,16 @@ public class SubwayController {
                 }
                 secondChoice = Integer.parseInt(secondChoiceStr);
                 // 구간 등록
-                if (secondChoice == 1) {
+                if (SectionManageMenu.ADD_SECTION.isSamePrefix(secondChoice)) {
                     processToAddSection();
                 }
                 // 구간 삭제
-                if (secondChoice == 2) {
+                if (SectionManageMenu.DELETE_SECTION.isSamePrefix(secondChoice)) {
                     processToDeleteSection();
                 }
             }
             // 지하철 노선도 출력
-            if (firstChoice == 4) {
+            if (MainMenu.PRINT_SUBWAY_MAP.isSamePrefix(firstChoice)) {
                 outputView.printSubwayMap();
             }
 

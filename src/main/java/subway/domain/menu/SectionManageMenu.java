@@ -25,6 +25,10 @@ public enum SectionManageMenu {
                 .collect(Collectors.toList());
     }
 
+    public boolean isSamePrefix(int prefix) {
+        return Integer.parseInt(this.prefix) == prefix;
+    }
+
     @Override
     public String toString() {
         return prefix + content;
