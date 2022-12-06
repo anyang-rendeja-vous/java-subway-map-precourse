@@ -6,6 +6,7 @@ public class Line {
 
     private static final String LINE_ALREADY_EXISTED_ERROR = "이미 등록된 노선 이름입니다.";
     private static final String LINE_INVALID_SIZE_ERROR = "지하철 노선 이름은 2글자 이상이어야 합니다.";
+    private static final String CANNOT_DELETE_STATION_ERROR = "노선에 포함된 역이 두 개 이하인 경우 역을 제거할 수 없습니다.";
     private String name;
     private LinkedList<Station> stations = new LinkedList<>();
 
@@ -48,6 +49,9 @@ public class Line {
     }
 
     public void deleteSection(Station station) {
+        if (stations.size() <= 2) {
+            throw new IllegalStateException(CANNOT_DELETE_STATION_ERROR);
+        }
         stations.remove(station);
     }
 

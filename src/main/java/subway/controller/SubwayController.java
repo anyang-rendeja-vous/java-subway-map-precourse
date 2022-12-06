@@ -171,8 +171,12 @@ public class SubwayController {
         String lineName = inputView.inputLineNameToDeleteInSection();
         String stationName = inputView.inputStationNameToDeleteInSection();
         Line line = LineRepository.findLine(lineName);
-        line.deleteSection(StationRepository.findStation(stationName));
-        outputView.successDeleteSection();
+        try {
+            line.deleteSection(StationRepository.findStation(stationName));
+            outputView.successDeleteSection();
+        } catch(IllegalStateException ex) {
+            outputView.printError(ex.getMessage());
+        }
     }
 
 
