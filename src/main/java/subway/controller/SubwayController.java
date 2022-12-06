@@ -32,26 +32,28 @@ public class SubwayController {
 
     public void run() {
         initialService.initializeData();
-        String mainMenuChoice;
-        int mainMenuNumber;
+        String menuChoice;
         while (true) {
             outputView.printInitialMenu();
-            mainMenuChoice = repeat(inputView::inputNumber);
-            if (mainMenuChoice.equals(QUIT)) {
+            menuChoice = repeat(inputView::inputNumber);
+            if (menuChoice.equals(QUIT)) {
                 break;
             }
-            mainMenuNumber = Integer.parseInt(mainMenuChoice);
-            if (manageStation(mainMenuNumber)) {
-                continue;
-            }
-            if (manageLine(mainMenuNumber)) {
-                continue;
-            }
-            if (manageSection(mainMenuNumber)) {
-                continue;
-            }
-            printSubwayMap(mainMenuNumber);
+            selectMenu(Integer.parseInt(menuChoice));
         }
+    }
+
+    private void selectMenu(int menuNumber) {
+        if (manageStation(menuNumber)) {
+            return;
+        }
+        if (manageLine(menuNumber)) {
+            return;
+        }
+        if (manageSection(menuNumber)) {
+            return;
+        }
+        printSubwayMap(menuNumber);
     }
 
     private boolean manageStation(int mainMenuNumber) {
