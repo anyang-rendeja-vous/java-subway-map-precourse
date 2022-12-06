@@ -26,8 +26,7 @@ public class InputView {
     private static final String SUBWAY_LIST = "지하철 노선도";
 
     public void printMainChoicesMenu() {
-        System.out.println();
-        System.out.println(HASHTAG + " " + MAIN_MENU_OPENING);
+        System.out.println(System.lineSeparator() + HASHTAG + " " + MAIN_MENU_OPENING);
         System.out
                 .println(MAIN_FIRST + "\n" + MAIN_SECOND + "\n" + MAIN_THIRD + "\n" + MAIN_FOURTH + "\n" + MAIN_FINAL);
         System.out.println();
@@ -38,47 +37,39 @@ public class InputView {
     }
 
     public void printCreationChoiceOpening(String subject) {
-        System.out.println();
-        System.out.printf(HASHTAG + " " + TO_CREATE_OPENING + "\n", subject);
+        System.out.printf(System.lineSeparator() + HASHTAG + " " + TO_CREATE_OPENING + "\n", subject);
     }
 
     public void printFeaturesMenu(String subject) {
-        System.out.println();
-        System.out.printf(HASHTAG + " " + FEATURE_MENU_OPENING + "\n", subject);
+        System.out.printf(System.lineSeparator() + HASHTAG + " " + FEATURE_MENU_OPENING + "\n", subject);
         System.out.printf(FIRST_FEATURE + "\n" + SECOND_FEATURE + "\n" + THIRD_FEATURE + "\n" + BACK + "\n", subject, subject, subject);
         System.out.println();
     }
 
     public void printSectionsMenu(String subject) {
-        System.out.println();
-        System.out.printf(HASHTAG + " " + FEATURE_MENU_OPENING + "\n", subject);
+        System.out.printf(System.lineSeparator() + HASHTAG + " " + FEATURE_MENU_OPENING + "\n", subject);
         System.out.printf(FIRST_FEATURE + "\n" + SECOND_FEATURE + "\n" + BACK + "\n", subject, subject);
         System.out.println();
     }
 
     public void printDeleteChoiceOpening(String subject) {
-        System.out.println();
-        System.out.printf(HASHTAG + " " + TO_DELETE_OPENING + "\n", subject);
+        System.out.printf(System.lineSeparator() + HASHTAG + " " + TO_DELETE_OPENING + "\n", subject);
     }
 
     public void printListOpening(String subject) {
-        System.out.println();
-        System.out.printf(HASHTAG + " " + LIST_OPENING + "\n", subject);
+        System.out.printf(System.lineSeparator() + HASHTAG + " " + LIST_OPENING + "\n", subject);
     }
 
     public void printLastStationChoiceOpening(String subject) {
-        System.out.println();
-        System.out.printf(HASHTAG + " " + LAST_STATION_OPENING + "\n", subject);
+        System.out.printf(System.lineSeparator() + HASHTAG + " " + LAST_STATION_OPENING + "\n", subject);
     }
 
     public void printTotalSubwayOpening() {
-        System.out.println();
-        System.out.println(HASHTAG + " " + SUBWAY_LIST);
+        System.out.println(System.lineSeparator() + HASHTAG + " " + SUBWAY_LIST);
     }
 
     public void printSectionsInputOpening(String subject){
-        System.out.println();
-        System.out.printf(HASHTAG + " " + SECTION_INPUT_OPENING + "\n", subject);
+        System.out.printf(System.lineSeparator() + HASHTAG + " " + SECTION_INPUT_OPENING + "\n", subject);
     }
 
 }
