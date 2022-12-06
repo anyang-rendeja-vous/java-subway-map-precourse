@@ -162,9 +162,13 @@ public class SubwayController {
         String stationName = inputView.inputStationName();
         String order = inputView.inputOrder();
         Line line = LineRepository.findLine(lineName);
-        line.addSectionAsSpecified(StationRepository.findStation(stationName),
-                Integer.parseInt(order) - 1); // 1번부터 시작하니까 실제로는 -1 해야함
-        outputView.successAddSection();
+        try {
+            line.addSectionAsSpecified(StationRepository.findStation(stationName),
+                    Integer.parseInt(order) - 1); // 1번부터 시작하니까 실제로는 -1 해야함
+            outputView.successAddSection();
+        } catch(IllegalArgumentException ex) {
+            outputView.printError(ex.getMessage());
+        }
     }
 
     private void processToDeleteSection() {
