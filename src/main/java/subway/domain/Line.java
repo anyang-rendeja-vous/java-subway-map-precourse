@@ -1,15 +1,71 @@
 package subway.domain;
 
-public class Line {
-    private String name;
+import static subway.ui.ErrorMessages.FORBIDDEN_STATION_TO_DELETE;
+import static subway.ui.ErrorMessages.INVALID_LINE_NAME_LENGTH;
+import static subway.ui.ErrorMessages.INVALID_LINE_NAME_STRUCT;
 
-    public Line(String name) {
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+
+public class Line extends Domain{
+    private static final String LINE_SUFFIX = "선";
+    private static final int NAME_LENGTH = 2;
+
+    private final LinkedList<Station> stations = new LinkedList<>();
+
+    public Line(String name, Station...stations) {
         this.name = name;
-    }
-
-    public String getName() {
-        return name;
+        Arrays.stream(stations)
+                .forEach(this::addStation);
     }
 
     // 추가 기능 구현
+    public static void validateName(String lineInput){
+        if (lineInput.length() < NAME_LENGTH){
+            throw new IllegalArgumentException(INVALID_LINE_NAME_LENGTH.getMessage());
+        }
+        if (!lineInput.endsWith(LINE_SUFFIX)){
+            throw new IllegalArgumentException(INVALID_LINE_NAME_STRUCT.getMessage());
+        }
+    }
+
+    public void addStation(Station station){
+        stations.add(station);
+    }
+
+    public List<Domain> getStations() {
+        return Collections.unmodifiableList(stations);
+    }
+
+    public boolean stationExists(Station station){
+        return stations
+                .stream()
+                .anyMatch(singleStation -> singleStation.nameMatches(station));
+    }
+
+    public Station getExistingStation(Station station){
+        return stations
+                .stream()
+                .filter(singleStation -> singleStation.nameMatches(station))
+                .findAny()
+                .orElseThrow(() -> new IllegalStateException(FORBIDDEN_STATION_TO_DELETE.getMessage()));
+    }
+
+    public boolean isInRange(Integer order){
+        return 1 <= order && order <= stations.size();
+    }
+
+    public void insertStation(Station station, Integer order){
+        stations.add(order - 1, station);
+    }
+
+    public boolean isDeletableInSize(){
+        return stations.size() > 2;
+    }
+
+    public void removeStation(Station station) {
+        stations.remove(station);
+    }
 }
