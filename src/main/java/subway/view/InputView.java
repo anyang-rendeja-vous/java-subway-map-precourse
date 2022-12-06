@@ -57,8 +57,7 @@ public class InputView {
     public String inputStationNameToAdd() {
         System.out.println();
         System.out.println(ENTER_STATION_NAME_TO_ADD);
-        String name = input();
-        return name;
+        return input();
     }
 
     public String inputStationNameToDelete() {
@@ -76,56 +75,48 @@ public class InputView {
     public String inputUpBoundTerminusStation() {
         System.out.println();
         System.out.println(ENTER_UPBOUND_TERMINUS_STATION);
-        String name = input();
-        return name;
+        return input();
     }
 
     public String inputDownBoundTerminusStation() {
         System.out.println();
         System.out.println(ENTER_DOWNBOUND_TERMINUS_STATION);
-        String name = input();
-        return name;
+        return input();
     }
 
     public String inputLineNameToDelete() {
         System.out.println();
         System.out.println(ENTER_LINE_NAME_TO_DELETE);
-        String name = input();
-        return name;
+        return input();
     }
 
     public String inputLineName() {
         System.out.println();
         System.out.println(ENTER_LINE_NAME);
-        String name = input();
-        return name;
+        return input();
     }
 
     public String inputStationName() {
         System.out.println();
         System.out.println(ENTER_STATION_NAME);
-        String name = input();
-        return name;
+        return input();
     }
 
     public String inputOrder() {
         System.out.println();
         System.out.println(ENTER_ORDER);
-        String name = input();
-        return name;
+        return input();
     }
 
     public String inputLineNameToDeleteInSection() {
         System.out.println();
         System.out.println(ENTER_LINE_NAME_TO_DELETE_IN_SECTION);
-        String name = input();
-        return name;
+        return input();
     }
 
     public String inputStationNameToDeleteInSection() {
         System.out.println();
         System.out.println(ENTER_STATION_NAME_TO_DELETE_IN_SECTION);
-        String name = input();
-        return name;
+        return input();
     }
 }

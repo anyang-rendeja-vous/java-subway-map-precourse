@@ -87,6 +87,7 @@ public class OutputView {
     public void successDeleteStation() {
         System.out.println();
         System.out.println(PREFIX + SUCCESSFUL_STATION_DELETE);
+        System.out.println();
     }
 
     public void printAllStations(List<Station> stations) {
