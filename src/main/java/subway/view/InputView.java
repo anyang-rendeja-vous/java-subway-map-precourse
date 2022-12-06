@@ -64,15 +64,13 @@ public class InputView {
     public String inputStationNameToDelete() {
         System.out.println();
         System.out.println(ENTER_STATION_NAME_TO_DELETE);
-        String name = input();
-        return name;
+        return input();
     }
 
     public String inputLineNameToAdd() {
         System.out.println();
         System.out.println(ENTER_LINE_NAME_TO_ADD);
-        String name = input();
-        return name;
+        return input();
     }
 
     public String inputUpboundTerminusStation() {

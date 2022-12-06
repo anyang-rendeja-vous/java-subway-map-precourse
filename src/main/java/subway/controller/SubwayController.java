@@ -30,7 +30,6 @@ public class SubwayController {
             if (firstChoiceStr.equals("Q")) {
                 break;
             }
-
             firstChoice = Integer.parseInt(firstChoiceStr);
             String secondChoiceStr;
             int secondChoice;
@@ -41,36 +40,20 @@ public class SubwayController {
                 if (secondChoiceStr.equals("B")) {
                     continue;
                 }
-
                 secondChoice = Integer.parseInt(secondChoiceStr);
-
                 // 역 등록
                 if (secondChoice == 1) {
-                    createStation(inputView.inputStationNameToAdd());
-                    outputView.successAddStation();
+                    processToAddStation();
                 }
-
                 // 역 삭제
                 if (secondChoice == 2) {
-                    String deleteStation = inputView.inputStationNameToDelete();
-                    // 어느 노선에도 포함되어 있지 않은 경우 삭제 가능
-                    if (!LineRepository.isNotContain(deleteStation)) {
-                        throw new IllegalArgumentException("노선에 등록되어 있는 역은 삭제할 수 없습니다.");
-                    }
-                    if (!StationRepository.deleteStation(deleteStation)) {
-                        throw new IllegalArgumentException("존재하지 않는 역입니다.");
-                    }
-//                    StationRepository.deleteStation(
-//                            inputView.inputStationNameToDelete()); // 삭제할 수 없다면 false 반환 -> 예외 처리
-                    outputView.successDeleteStation();
+                    processToDeleteStation();
                 }
-
                 // 역 조회
                 if (secondChoice == 3) {
-                    outputView.printAllStations(StationRepository.stations());
+                    processToPrintStation();
                 }
             }
-
             // 노선 관리
             if (firstChoice == 2) {
                 outputView.printLineManagementMenu();
@@ -78,31 +61,20 @@ public class SubwayController {
                 if (secondChoiceStr.equals("B")) {
                     continue;
                 }
-
                 secondChoice = Integer.parseInt(secondChoiceStr);
-
                 // 노선 등록
                 if (secondChoice == 1) {
-                    String lineName = inputView.inputLineNameToAdd();
-                    String upbound = inputView.inputUpboundTerminusStation();
-                    String downbound = inputView.inputDownboundTerminusStation();
-                    createLine(lineName, upbound, downbound);
-                    outputView.successAddLine();
+                    processToAddLine();
                 }
-
                 // 노선 삭제
                 if (secondChoice == 2) {
-                    LineRepository.deleteLineByName(
-                            inputView.inputLineNameToDelete()); // 삭제할 수 없다면 false 반환 -> 예외 처리
-                    outputView.successDeleteLine();
+                    processToDeleteLine();
                 }
-
                 // 노선 조회
                 if (secondChoice == 3) {
-                    outputView.printAllLines(LineRepository.lines());
+                    processToPrintLine();
                 }
             }
-
             // 구간 관리
             if (firstChoice == 3) {
                 outputView.printSectionManagementMenu();
@@ -110,36 +82,92 @@ public class SubwayController {
                 if (secondChoiceStr.equals("B")) {
                     continue;
                 }
-
                 secondChoice = Integer.parseInt(secondChoiceStr);
-
                 // 구간 등록
                 if (secondChoice == 1) {
-                    String lineName = inputView.inputLineName();
-                    String stationName = inputView.inputStationName();
-                    String order = inputView.inputOrder();
-                    Line line = LineRepository.findLine(lineName);
-                    line.addSectionAsSpecified(StationRepository.findStation(stationName),
-                            Integer.parseInt(order) - 1); // 1번부터 시작하니까 실제로는 -1 해야함
-                    outputView.successAddSection();
+                    processToAddSection();
                 }
-
                 // 구간 삭제
                 if (secondChoice == 2) {
-                    String lineName = inputView.inputLineNameToDeleteInSection();
-                    String stationName = inputView.inputStationNameToDeleteInSection();
-                    Line line = LineRepository.findLine(lineName);
-                    line.deleteSection(StationRepository.findStation(stationName));
-                    outputView.successDeleteSection();
+                    processToDeleteSection();
                 }
             }
-
             // 지하철 노선도 출력
             if (firstChoice == 4) {
                 outputView.printSubwayMap();
             }
 
         }
+    }
+
+
+
+
+
+
+    private void processToAddStation() {
+        createStation(inputView.inputStationNameToAdd());
+        outputView.successAddStation();
+    }
+
+    private void processToDeleteStation() {
+        String deleteStation = inputView.inputStationNameToDelete();
+        try {
+            if (LineRepository.isContain(deleteStation)) {
+                throw new IllegalArgumentException("노선에 등록되어 있는 역은 삭제할 수 없습니다.");
+            }
+            if (!StationRepository.deleteStation(deleteStation)) {
+                throw new IllegalArgumentException("존재하지 않는 역입니다.");
+            }
+            outputView.successDeleteStation();
+        } catch(IllegalArgumentException ex) {
+            outputView.printError(ex.getMessage());
+        }
+    }
+
+    private void processToPrintStation() {
+        outputView.printAllStations(StationRepository.stations());
+    }
+
+    private void processToAddLine() {
+        String lineName = inputView.inputLineNameToAdd();
+        String upbound = inputView.inputUpboundTerminusStation();
+        String downbound = inputView.inputDownboundTerminusStation();
+        createLine(lineName, upbound, downbound);
+        outputView.successAddLine();
+    }
+
+    private void processToDeleteLine() {
+        try {
+            if (!LineRepository.deleteLineByName(inputView.inputLineNameToDelete())) {
+                throw new IllegalArgumentException("존재하지 않는 노선입니다.");
+            }
+            outputView.successDeleteLine();
+        } catch(IllegalArgumentException ex) {
+            outputView.printError(ex.getMessage());
+        }
+    }
+
+    private void processToPrintLine() {
+        outputView.printAllLines(LineRepository.lines());
+    }
+
+    private void processToAddSection() {
+        String lineName = inputView.inputLineName();
+        String stationName = inputView.inputStationName();
+        String order = inputView.inputOrder();
+        Line line = LineRepository.findLine(lineName);
+        line.addSectionAsSpecified(StationRepository.findStation(stationName),
+                Integer.parseInt(order) - 1); // 1번부터 시작하니까 실제로는 -1 해야함
+        outputView.successAddSection();
+    }
+
+    private void processToDeleteSection() {
+        String lineName = inputView.inputLineNameToDeleteInSection();
+        String stationName = inputView.inputStationNameToDeleteInSection();
+        Line line = LineRepository.findLine(lineName);
+        line.deleteSection(StationRepository.findStation(stationName));
+        outputView.successDeleteSection();
     }
 
     private void initialSettings() {
