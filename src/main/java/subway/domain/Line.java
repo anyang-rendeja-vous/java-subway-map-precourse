@@ -39,7 +39,7 @@ public class Line {
         }
     }
 
-    public void addSection(Station station) { // 구간 추가 = 노선에 역 추가
+    public void addSection(Station station) {
         stations.add(1, station);
     }
 
