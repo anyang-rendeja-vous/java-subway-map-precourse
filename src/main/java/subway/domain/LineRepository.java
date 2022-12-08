@@ -32,13 +32,17 @@ public class LineRepository {
     public static boolean isContain(String findStation) {
         boolean isContain = false;
         for (Line line : lines) {
-            isContain = line.getStations()
-                    .stream()
-                    .anyMatch(station -> station.getName().equals(findStation));
+            isContain = isContainInSingleLine(findStation, line);
             if (isContain) {
                 break;
             }
         }
         return isContain;
+    }
+
+    private static boolean isContainInSingleLine(String findStation, Line line) {
+        return line.getStations()
+                .stream()
+                .anyMatch(station -> station.getName().equals(findStation));
     }
 }
