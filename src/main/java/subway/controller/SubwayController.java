@@ -131,15 +131,19 @@ public class SubwayController {
     private void processToDeleteStation() {
         String deleteStation = inputView.inputStationNameToDelete();
         try {
-            if (LineRepository.isContain(deleteStation)) {
-                throw new IllegalArgumentException(CANNOT_DELETE_ADDED_STATION);
-            }
-            if (!StationRepository.deleteStation(deleteStation)) {
-                throw new IllegalArgumentException(CANNOT_DELETE_NON_EXISTENT_STATION);
-            }
+            validateDeleteStation(deleteStation);
             outputView.successDeleteStation();
         } catch (IllegalArgumentException ex) {
             outputView.printError(ex.getMessage());
+        }
+    }
+
+    private void validateDeleteStation(String deleteStation) {
+        if (LineRepository.isContain(deleteStation)) {
+            throw new IllegalArgumentException(CANNOT_DELETE_ADDED_STATION);
+        }
+        if (!StationRepository.deleteStation(deleteStation)) {
+            throw new IllegalArgumentException(CANNOT_DELETE_NON_EXISTENT_STATION);
         }
     }
 
@@ -161,12 +165,16 @@ public class SubwayController {
 
     private void processToDeleteLine() {
         try {
-            if (!LineRepository.deleteLineByName(inputView.inputLineNameToDelete())) {
-                throw new IllegalArgumentException(CANNOT_DELETE_NON_EXISTENT_LINE);
-            }
+            validateDeleteLine();
             outputView.successDeleteLine();
         } catch (IllegalArgumentException ex) {
             outputView.printError(ex.getMessage());
+        }
+    }
+
+    private void validateDeleteLine() {
+        if (!LineRepository.deleteLineByName(inputView.inputLineNameToDelete())) {
+            throw new IllegalArgumentException(CANNOT_DELETE_NON_EXISTENT_LINE);
         }
     }
 
