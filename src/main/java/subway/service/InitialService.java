@@ -1,19 +1,13 @@
 package subway.service;
 
+import java.util.Arrays;
 import subway.domain.Line;
 import subway.domain.LineRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
+import subway.domain.initial.StationType;
 
 public class InitialService {
-
-    private static final String STATION_GYODAE = "교대역";
-    private static final String STATION_GANGNAM = "강남역";
-    private static final String STATION_YEOKSAM = "역삼역";
-    private static final String STATION_SOUTH_TERMINAL = "남부터미널역";
-    private static final String STATION_YANGJAE = "양재역";
-    private static final String STATION_YANGJAE_CITIZENS_FOREST = "양재시민의숲역";
-    private static final String STATION_MAEBONG = "매봉역";
 
     private static final String LINE_TWO = "2호선";
     private static final String LINE_THREE = "3호선";
@@ -26,13 +20,8 @@ public class InitialService {
     }
 
     private void setStations() {
-        createStation(STATION_GYODAE);
-        createStation(STATION_GANGNAM);
-        createStation(STATION_YEOKSAM);
-        createStation(STATION_SOUTH_TERMINAL);
-        createStation(STATION_YANGJAE);
-        createStation(STATION_YANGJAE_CITIZENS_FOREST);
-        createStation(STATION_MAEBONG);
+        Arrays.stream(StationType.values())
+                        .forEach(stationType -> createStation(stationType.getName()));
     }
 
     public void createStation(String stationName) {
@@ -40,9 +29,9 @@ public class InitialService {
     }
 
     private void setLines() {
-        createLine(LINE_TWO, STATION_GYODAE, STATION_YEOKSAM);
-        createLine(LINE_THREE, STATION_GYODAE, STATION_MAEBONG);
-        createLine(LINE_SHINBUNDANG, STATION_GANGNAM, STATION_YANGJAE_CITIZENS_FOREST);
+        createLine(LINE_TWO, StationType.GYODAE.getName(), StationType.YEOKSAM.getName());
+        createLine(LINE_THREE, StationType.GYODAE.getName(), StationType.MAEBONG.getName());
+        createLine(LINE_SHINBUNDANG, StationType.GANGNAM.getName(), StationType.YANGJAE_CITIZENS_FOREST.getName());
     }
 
     public void createLine(String lineName, String upBound, String downBound) {
@@ -51,10 +40,10 @@ public class InitialService {
     }
 
     private void setSections() {
-        addSections(LINE_TWO, STATION_GANGNAM);
-        addSections(LINE_THREE, STATION_SOUTH_TERMINAL);
-        addSections(LINE_THREE, STATION_YANGJAE);
-        addSections(LINE_SHINBUNDANG, STATION_YANGJAE);
+        addSections(LINE_TWO, StationType.GANGNAM.getName());
+        addSections(LINE_THREE, StationType.SOUTH_TERMINAL.getName());
+        addSections(LINE_THREE, StationType.YANGJAE.getName());
+        addSections(LINE_SHINBUNDANG, StationType.YANGJAE.getName());
     }
 
     private void addSections(String lineName, String StationName) {
