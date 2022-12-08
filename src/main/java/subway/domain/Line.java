@@ -40,11 +40,11 @@ public class Line {
         }
     }
 
-    public void addSection(Station station) {
+    public void addSectionToFirst(Station station) {
         stations.add(1, station);
     }
 
-    public void addSectionAsSpecified(Station station, int order) {
+    public void addSection(Station station, int order) {
         if (order < 1 || order > stations.size()) {
             throw new IllegalArgumentException(String.format(INVALID_ORDER_ERROR, stations.size() + 1));
         }

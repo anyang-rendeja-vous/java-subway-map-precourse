@@ -188,7 +188,7 @@ public class SubwayController {
         String order = inputView.inputOrder();
         Line line = LineRepository.findLine(lineName);
         try {
-            line.addSectionAsSpecified(StationRepository.findStation(stationName),
+            line.addSection(StationRepository.findStation(stationName),
                     Integer.parseInt(order) - 1);
             outputView.successAddSection();
         } catch (IllegalArgumentException ex) {

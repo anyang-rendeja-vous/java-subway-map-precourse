@@ -58,6 +58,7 @@ public class InitialService {
     }
 
     private void addSections(String lineName, String StationName) {
-        LineRepository.findLine(lineName).addSection(StationRepository.findStation(StationName));
+        LineRepository.findLine(lineName)
+                .addSectionToFirst(StationRepository.findStation(StationName));
     }
 }
