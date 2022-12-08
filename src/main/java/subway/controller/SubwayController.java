@@ -139,7 +139,7 @@ public class SubwayController {
     }
 
     private void validateDeleteStation(String deleteStation) {
-        if (LineRepository.isContain(deleteStation)) {
+        if (LineRepository.isAddedFindStation(deleteStation)) {
             throw new IllegalArgumentException(CANNOT_DELETE_ADDED_STATION);
         }
         if (!StationRepository.deleteStation(deleteStation)) {

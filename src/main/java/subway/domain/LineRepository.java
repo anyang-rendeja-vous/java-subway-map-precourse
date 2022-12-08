@@ -29,18 +29,23 @@ public class LineRepository {
                 .orElseThrow(() -> new IllegalArgumentException(NOT_EXISTED_LINE));
     }
 
-    public static boolean isContain(String findStation) {
-        boolean isContain = false;
+    public static boolean isContain(String lineName) {
+        return lines.stream()
+                .anyMatch(line -> line.getName().equals(lineName));
+    }
+
+    public static boolean isAddedFindStation(String findStation) {
+        boolean isAdded = false;
         for (Line line : lines) {
-            isContain = isContainInSingleLine(findStation, line);
-            if (isContain) {
+            isAdded = isAddedInSingleLine(findStation, line);
+            if (isAdded) {
                 break;
             }
         }
-        return isContain;
+        return isAdded;
     }
 
-    private static boolean isContainInSingleLine(String findStation, Line line) {
+    private static boolean isAddedInSingleLine(String findStation, Line line) {
         return line.getStations()
                 .stream()
                 .anyMatch(station -> station.getName().equals(findStation));
