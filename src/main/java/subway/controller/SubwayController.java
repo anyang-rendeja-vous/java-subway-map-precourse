@@ -39,85 +39,82 @@ public class SubwayController {
             if (menuChoice.equals(QUIT)) {
                 break;
             }
-            selectMenu(Integer.parseInt(menuChoice));
+            selectMenu(menuChoice);
         }
     }
 
-    private void selectMenu(int menuNumber) {
-        if (manageStation(menuNumber)) {
+    private void selectMenu(String mainMenuChoice) {
+        if (manageStation(mainMenuChoice)) {
             return;
         }
-        if (manageLine(menuNumber)) {
+        if (manageLine(mainMenuChoice)) {
             return;
         }
-        if (manageSection(menuNumber)) {
+        if (manageSection(mainMenuChoice)) {
             return;
         }
-        printSubwayMap(menuNumber);
+        printSubwayMap(mainMenuChoice);
     }
 
-    private boolean manageStation(int mainMenuNumber) {
-        if (MainMenu.MANAGE_STATION.isSamePrefix(mainMenuNumber)) {
+    private boolean manageStation(String mainMenuChoice) {
+        if (MainMenu.MANAGE_STATION.isSamePrefix(mainMenuChoice)) {
             outputView.printStationManagementMenu();
             String menuChoice = repeat(inputView::inputStationManagement);
             if (menuChoice.equals(BACK)) {
                 return true;
             }
-            int menuNumber = Integer.parseInt(menuChoice);
-            if (StationManageMenu.ADD_STATION.isSamePrefix(menuNumber)) {
+            if (StationManageMenu.ADD_STATION.isSamePrefix(menuChoice)) {
                 processToAddStation();
             }
-            if (StationManageMenu.DELETE_STATION.isSamePrefix(menuNumber)) {
+            if (StationManageMenu.DELETE_STATION.isSamePrefix(menuChoice)) {
                 processToDeleteStation();
             }
-            if (StationManageMenu.SELECT_STATION.isSamePrefix(menuNumber)) {
+            if (StationManageMenu.SELECT_STATION.isSamePrefix(menuChoice)) {
                 processToPrintStation();
             }
         }
         return false;
     }
 
-    private boolean manageLine(int mainMenuNumber) {
-        if (MainMenu.MANAGE_LINE.isSamePrefix(mainMenuNumber)) {
+    private boolean manageLine(String mainMenuChoice) {
+        if (MainMenu.MANAGE_LINE.isSamePrefix(mainMenuChoice)) {
             outputView.printLineManagementMenu();
             String menuChoice = repeat(inputView::inputStationManagement);
             if (menuChoice.equals(BACK)) {
                 return true;
             }
-            int menuNumber = Integer.parseInt(menuChoice);
-            if (LineManageMenu.ADD_LINE.isSamePrefix(menuNumber)) {
+            if (LineManageMenu.ADD_LINE.isSamePrefix(menuChoice)) {
                 processToAddLine();
             }
-            if (LineManageMenu.DELETE_LINE.isSamePrefix(menuNumber)) {
+            if (LineManageMenu.DELETE_LINE.isSamePrefix(menuChoice)) {
                 processToDeleteLine();
             }
-            if (LineManageMenu.SELECT_LINE.isSamePrefix(menuNumber)) {
+            if (LineManageMenu.SELECT_LINE.isSamePrefix(menuChoice)) {
                 processToPrintLine();
             }
         }
         return false;
     }
 
-    private boolean manageSection(int mainMenuNumber) {
-        if (MainMenu.MANAGE_SECTION.isSamePrefix(mainMenuNumber)) {
+    private boolean manageSection(String mainMenuChoice) {
+        if (MainMenu.MANAGE_SECTION.isSamePrefix(mainMenuChoice)) {
             outputView.printSectionManagementMenu();
             String menuChoice = repeat(inputView::inputSectionManagement);
             if (menuChoice.equals(BACK)) {
                 return true;
             }
-            int menuNumber = Integer.parseInt(menuChoice);
-            if (SectionManageMenu.ADD_SECTION.isSamePrefix(menuNumber)) {
+            if (SectionManageMenu.ADD_SECTION.isSamePrefix(menuChoice)) {
                 processToAddSection();
             }
-            if (SectionManageMenu.DELETE_SECTION.isSamePrefix(menuNumber)) {
+            if (SectionManageMenu.DELETE_SECTION.isSamePrefix(menuChoice)) {
                 processToDeleteSection();
             }
         }
         return false;
     }
 
-    private void printSubwayMap(int mainMenuNumber) {
-        if (MainMenu.PRINT_SUBWAY_MAP.isSamePrefix(mainMenuNumber)) {
+    private void printSubwayMap(String mainMenuChoice) {
+        if (MainMenu.PRINT_SUBWAY_MAP.isSamePrefix(mainMenuChoice)) {
             outputView.printMap();
         }
     }
